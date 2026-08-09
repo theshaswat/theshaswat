@@ -78,6 +78,18 @@ DRAWN = {
                   '<rect x="6" y="10" width="2.6" height="4" fill="{c}"/>'
                   '<rect x="10.7" y="7.5" width="2.6" height="6.5" fill="{c}"/>'
                   '<rect x="15.4" y="9" width="2.6" height="5" fill="{c}"/>',
+    "xgboost": '<circle cx="12" cy="4" r="2.3" fill="{c}"/>'
+               '<circle cx="6" cy="12" r="2.3" fill="{c}"/>'
+               '<circle cx="18" cy="12" r="2.3" fill="{c}"/>'
+               '<circle cx="3.5" cy="20" r="2.3" fill="{c}"/>'
+               '<circle cx="9.5" cy="20" r="2.3" fill="{c}"/>'
+               '<path d="M10.6 5.9L7.4 10.1M13.4 5.9l3.2 4.2M4.9 14.1L4.1 17.7M7.1 14.1l1.8 3.6" '
+               'stroke="{c}" stroke-width="1.4" stroke-linecap="round"/>',
+    "shap": '<rect x="11.4" y="2.5" width="1.3" height="19" fill="{c}"/>'
+            '<rect x="3.5" y="4.6" width="7.9" height="2.7" rx="0.6" fill="{c}"/>'
+            '<rect x="12.7" y="8.6" width="7.3" height="2.7" rx="0.6" fill="{c}"/>'
+            '<rect x="5.8" y="12.6" width="5.6" height="2.7" rx="0.6" fill="{c}"/>'
+            '<rect x="12.7" y="16.6" width="4.6" height="2.7" rx="0.6" fill="{c}"/>',
 }
 
 TOOLS = [
@@ -85,10 +97,10 @@ TOOLS = [
     ("pandas", "pandas", "pandas"), ("numpy", "NumPy", "numpy"),
     ("scipy", "SciPy", "scipy"), ("statsmodels", "statsmodels", None),
     ("r", "R", "r"), ("stata", "Stata", None),
-    ("scikitlearn", "scikit-learn", "scikitlearn"), ("postgresql", "SQL", "postgresql"),
-    ("powerbi", "Power BI", None), ("tableau", "Tableau", None),
-    ("matplotlib", "matplotlib", None), ("jupyter", "Jupyter", "jupyter"),
-    ("latex", "LaTeX", "latex"), ("git", "Git", "git"),
+    ("scikitlearn", "scikit-learn", "scikitlearn"), ("xgboost", "XGBoost", None),
+    ("shap", "SHAP", None), ("pytorch", "PyTorch", "pytorch"),
+    ("postgresql", "SQL", "postgresql"), ("powerbi", "Power BI", None),
+    ("tableau", "Tableau", None), ("latex", "LaTeX", "latex"),
     ("vba", "VBA", None), ("powerpoint", "PowerPoint", None),
 ]
 
