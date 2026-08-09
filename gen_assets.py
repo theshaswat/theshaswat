@@ -33,7 +33,8 @@ THEMES = {
 # cover valuation, M&A, banking, strategy/consulting, operating analysis and
 # economics without the page ever asking for a job.
 DISCIPLINES = ["FINANCE", "VALUATION", "M&amp;A", "CAPITAL MARKETS",
-               "STRATEGY", "OPERATIONS", "ECONOMICS"]
+               "STRATEGY", "OPERATIONS", "BUSINESS ANALYSIS", "ECONOMICS"]
+DISC_COLS = 4
 
 TICKER = [
     "Zepto &#8212; $3.8bn base case against a $7.0bn private mark",
@@ -86,18 +87,26 @@ def header(t):
         css.append("@keyframes k" + str(i) + "{" + keys.format(
             a=round(s + 0.1, 2), b=round(s + 2, 2),
             c=round(s + step - 4, 2), d=round(s + step - 2, 2)) + "}")
-    cellw = W / len(DISCIPLINES)
+    cellw = W / DISC_COLS
+    rowh = 30
+    top = 118
     cells = []
     for i, d in enumerate(DISCIPLINES):
-        cx = i * cellw + cellw / 2
-        cells.append(f'<text x="{cx:.1f}" y="150" font-size="10.5" letter-spacing="1.6" '
+        r, c = divmod(i, DISC_COLS)
+        cx = c * cellw + cellw / 2
+        ry = top + r * rowh
+        cells.append(f'<text x="{cx:.1f}" y="{ry+20}" font-size="11.5" letter-spacing="1.7" '
                      f'fill="{t["mute"]}" text-anchor="middle">{d}</text>')
-        if i:
-            cells.append(f'<rect x="{i*cellw:.1f}" y="131" width="1" height="26" fill="{t["cardline"]}"/>')
+        if c:
+            cells.append(f'<rect x="{c*cellw:.1f}" y="{ry+4}" width="1" height="22" '
+                         f'fill="{t["cardline"]}"/>')
+        if r:
+            cells.append(f'<rect x="{c*cellw:.1f}" y="{ry}" width="{cellw:.1f}" height="1" '
+                         f'fill="{t["cardline"]}"/>')
     ticker = "".join(
         f'<text class="t{i}" x="2" y="76" font-size="14" fill="{t["mute"]}" opacity="0">{s}</text>'
         for i, s in enumerate(TICKER))
-    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="168" viewBox="0 0 {W} 168" role="img" aria-label="Shaswat Sharma">
+    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="180" viewBox="0 0 {W} 180" role="img" aria-label="Shaswat Sharma">
   <style>{"".join(css)}</style>
   <g font-family="{MONO}">
     <text x="0" y="44" font-size="36" font-weight="600" letter-spacing="-0.6" fill="{t['ink']}">Shaswat Sharma</text>
@@ -105,7 +114,7 @@ def header(t):
     <rect x="0" y="98" width="{W}" height="1" fill="{t['rule']}"/>
     <rect x="0" y="118" width="{W}" height="1" fill="{t['rule']}"/>
     {"".join(cells)}
-    <rect x="0" y="164" width="{W}" height="1" fill="{t['rule']}"/>
+    <rect x="0" y="178" width="{W}" height="1" fill="{t['rule']}"/>
   </g>
 </svg>
 """
