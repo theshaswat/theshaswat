@@ -165,6 +165,65 @@ def toolkit(t):
             f'viewBox="0 0 {W} {H}" role="img" aria-label="Toolkit">' + "".join(body) + "</svg>\n")
 
 
+CARDS = [
+    ("ZEPTO", "Pre-IPO Valuation",
+     "$3.8bn base case", "against a $7.0bn private mark",
+     "relative valuation &#183; unit economics"),
+    ("SUN PHARMA / ORGANON", "Merger Arbitrage",
+     "Pass on the spread", "93.9% implied completion, 0.07% expected",
+     "event study &#183; GARCH &#183; Monte Carlo"),
+    ("PAYPAL", "Fairness Valuation",
+     "$60.50 below the floor", "of all three methods",
+     "DCF &#183; comps &#183; precedents"),
+]
+
+
+def showcase(t):
+    """Three project cards with the spotlight rotating between them.
+
+    The motion is the same idea as a record carousel, at a size that stays
+    readable: the cards never move position, only the emphasis does. Nothing
+    slides off screen, so a reader who arrives mid-cycle has still seen
+    everything - which a true carousel cannot promise."""
+    n, H = len(CARDS), 176
+    gap = 10
+    cw = (W - gap * (n - 1)) / n
+    dur = n * 4
+    step = 100 / n
+    css = []
+    for i in range(n):
+        s = i * step
+        css.append(f".c{i}{{animation:a{i} {dur}s infinite}}"
+                   f".b{i}{{animation:b{i} {dur}s infinite}}")
+        css.append(f"@keyframes a{i}{{0%,{s+0.1:.2f}%{{opacity:.42}}"
+                   f"{s+2:.2f}%,{s+step-4:.2f}%{{opacity:1}}"
+                   f"{s+step-2:.2f}%,100%{{opacity:.42}}}}")
+        css.append(f"@keyframes b{i}{{0%,{s+0.1:.2f}%{{stroke:{t['cardline']}}}"
+                   f"{s+2:.2f}%,{s+step-4:.2f}%{{stroke:{t['accent']}}}"
+                   f"{s+step-2:.2f}%,100%{{stroke:{t['cardline']}}}}}")
+    body = []
+    for i, (tag, title, head, sub, meth) in enumerate(CARDS):
+        x = i * (cw + gap)
+        body.append(
+            f'<g class="c{i}">'
+            f'<rect class="b{i}" x="{x+0.5:.1f}" y="0.5" width="{cw-1:.1f}" height="{H-1}" '
+            f'rx="7" fill="{t["card"]}" stroke="{t["cardline"]}" stroke-width="1.5"/>'
+            f'<text x="{x+22:.1f}" y="34" font-size="10.5" letter-spacing="1.6" '
+            f'fill="{t["accent"]}">{tag}</text>'
+            f'<text x="{x+22:.1f}" y="58" font-size="15" font-weight="600" '
+            f'fill="{t["ink"]}">{title}</text>'
+            f'<text x="{x+22:.1f}" y="96" font-size="19" font-weight="600" '
+            f'fill="{t["ink"]}">{head}</text>'
+            f'<text x="{x+22:.1f}" y="118" font-size="12" fill="{t["mute"]}">{sub}</text>'
+            f'<rect x="{x+22:.1f}" y="136" width="34" height="1.5" fill="{t["accent"]}"/>'
+            f'<text x="{x+22:.1f}" y="160" font-size="10.5" fill="{t["mute"]}">{meth}</text>'
+            f'</g>')
+    return (f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" '
+            f'viewBox="0 0 {W} {H}" role="img" aria-label="Selected work">'
+            f'<style>{"".join(css)}</style>'
+            f'<g font-family="{MONO}">' + "".join(body) + "</g></svg>\n")
+
+
 def section(t, title):
     tw = len(title) * 8.6
     return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="34" viewBox="0 0 {W} 34" role="img" aria-label="{title}">
@@ -183,6 +242,7 @@ for name, theme in THEMES.items():
     out.mkdir(parents=True, exist_ok=True)
     (out / "header.svg").write_text(header(theme))
     (out / "toolkit.svg").write_text(toolkit(theme))
+    (out / "showcase.svg").write_text(showcase(theme))
     for title, slug in SECTIONS:
         (out / f"{slug}.svg").write_text(section(theme, title))
 print("wrote", len(list((ROOT / "assets").rglob("*.svg"))), "svg files")
