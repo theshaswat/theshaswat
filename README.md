@@ -1,14 +1,14 @@
-## Shaswat Sharma
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/dark/header.svg"/><img src="assets/header.svg" alt="Shaswat Sharma — valuation and market-structure research on live transactions"/></picture>
 
-Valuation and market-structure research on live transactions. Primary filings read directly,
-numbers reconciled before they are interpreted, and models a reader can recalculate rather than
-take on trust.
+<a href="mailto:shaswatsharma.work@gmail.com"><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/EMAIL-0d1117?style=flat-square&logo=maildotru&logoColor=ffffff"/><img src="https://img.shields.io/badge/EMAIL-ffffff?style=flat-square&logo=maildotru&logoColor=0f172a" alt="Email"/></picture></a>
+<a href="https://www.linkedin.com/in/shaswatsharma49"><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/LINKEDIN-0d1117?style=flat-square&logo=linkedin&logoColor=ffffff"/><img src="https://img.shields.io/badge/LINKEDIN-ffffff?style=flat-square&logo=linkedin&logoColor=0f172a" alt="LinkedIn"/></picture></a>
 
-Three situations so far — a pre-IPO mark, a pending cross-border acquisition, and a reported
-take-private bid. Each ships the way the work would ship on a desk: an investment memo, a
-committee deck, and a live-formula model that moves when an assumption does.
+Primary filings read directly, numbers reconciled before they are interpreted, and models a
+reader can recalculate rather than take on trust. Each project ships the way the work would ship
+on a desk: an investment memo, a committee deck, and a live-formula model that moves when an
+assumption does.
 
----
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/dark/s-work.svg"/><img src="assets/s-work.svg" alt="01 — Selected work"/></picture>
 
 ### [Zepto — Pre-IPO Valuation](https://github.com/theshaswat/zepto-pre-ipo-valuation)
 
@@ -24,8 +24,6 @@ store per day of the three (1,618) and the weakest basket (₹388, against ₹51
 
 <sub>9 notebooks · 9-tab Excel model recalculated cell-by-cell against the Python engine · 8 primary sources read directly, including the 690-page DRHP · every figure traced to one registry</sub>
 
----
-
 ### [Sun Pharma / Organon — Merger Arbitrage](https://github.com/theshaswat/sunpharma-organon-merger-arbitrage)
 
 **Pass on the spread.** Standalone DCF puts Organon at $6.90 against a $14.00 offer, implying
@@ -39,8 +37,6 @@ evidence that cuts hardest against the standalone valuation.
 
 <sub>Market-model event study · GARCH(1,1) volatility regimes · cross-market Granger causality built around non-overlapping NSE/NYSE hours · Black-Scholes priced from first principles after testing and rejecting the listed options chain</sub>
 
----
-
 ### [PayPal — Fairness Valuation vs. the Stripe/Advent Bid](https://github.com/theshaswat/paypal-stripe-advent-ma-valuation)
 
 **$60.50 sits below the floor of all three methods.** DCF bear case $73.85, trading comps $76.69,
@@ -53,50 +49,31 @@ guidance. That reads the pre-news price as a sentiment floor, not an intrinsic-v
 
 <sub>Built in the 48 hours after Reuters broke the story · deal terms unconfirmed throughout, and treated as unconfirmed rather than assumed</sub>
 
----
-
-### Toolkit
-
-**Valuation and financial modelling**
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/dark/s-toolkit.svg"/><img src="assets/s-toolkit.svg" alt="02 — Toolkit"/></picture>
 
 ![Excel](https://img.shields.io/badge/Excel-334155?style=flat-square)
 ![Python](https://img.shields.io/badge/Python-334155?style=flat-square&logo=python&logoColor=white)
 ![pandas](https://img.shields.io/badge/pandas-334155?style=flat-square&logo=pandas&logoColor=white)
 ![NumPy](https://img.shields.io/badge/NumPy-334155?style=flat-square&logo=numpy&logoColor=white)
-
-**Econometrics, inference and machine learning**
-
 ![statsmodels](https://img.shields.io/badge/statsmodels-334155?style=flat-square)
 ![R](https://img.shields.io/badge/R-334155?style=flat-square&logo=r&logoColor=white)
 ![Stata](https://img.shields.io/badge/Stata-334155?style=flat-square)
 ![scikit-learn](https://img.shields.io/badge/scikit--learn-334155?style=flat-square&logo=scikitlearn&logoColor=white)
-
-**Data and reporting**
-
 ![SQL](https://img.shields.io/badge/SQL-334155?style=flat-square)
 ![Power BI](https://img.shields.io/badge/Power%20BI-334155?style=flat-square)
 
----
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/dark/s-method.svg"/><img src="assets/s-method.svg" alt="03 — How the work is built"/></picture>
 
-### How the work is built
-
-Each project separates the analysis engine from everything that presents it. One registry holds
-every externally-sourced figure, tagged by provenance tier; nothing else contains a typed-in
-number, so the memo, the notebooks, the deck and the model cannot drift apart.
-
-Each repository carries its own verification suite and runs it in CI on every push. The Zepto
-build rebuilds all nine notebooks, the deck, the PDFs and the workbook from source and re-audits
-the result; the PayPal build asserts every committed output still reproduces byte-for-byte.
-Primary sources are pinned by SHA-256 rather than redistributed, so a reader can prove they are
-holding the same document the figures were read from.
+One registry holds every externally-sourced figure, tagged by provenance tier; nothing else
+contains a typed-in number, so the memo, the notebooks, the deck and the model cannot drift
+apart. Each repository carries its own verification suite and runs it in CI on every push — the
+Zepto build rebuilds all nine notebooks, the deck, the PDFs and the workbook from source and
+re-audits the result, and the PayPal build asserts every committed output still reproduces
+byte-for-byte. Primary sources are pinned by SHA-256 rather than redistributed, so a reader can
+prove they hold the same document the figures were read from.
 
 Limitations are written down rather than omitted, including corrections made mid-analysis where
 an earlier draft was wrong. Two of the three recorded in the Zepto memo are errors a reader
 working from secondary coverage would reproduce.
 
----
-
-<sub><a href="mailto:shaswatsharma.work@gmail.com">shaswatsharma.work@gmail.com</a> · <a href="https://www.linkedin.com/in/shaswatsharma49">LinkedIn</a></sub>
-
 <sub>Independent research. Not investment advice.</sub>
-
