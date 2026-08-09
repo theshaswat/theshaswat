@@ -4,14 +4,16 @@ Generate the profile's SVG assets, light and dark.
 Monospace throughout: it reads as a working document rather than a brochure,
 which is the register the analysis itself is written in.
 
+Motion: the header carries a ticker that cycles the three headline findings.
+The technique is the one record-rotate uses - an animated SVG - but the file is
+committed here rather than fetched from a worker, so no outside service can take
+the page down or watch who loads it. A ticker is also the one form of motion
+that belongs on this profile: it is what the subject matter actually looks like.
+
 Tool marks: seven are real vendor logos (simple-icons, monochrome). Excel, Power
 BI, Stata and statsmodels have no logo in any icon set - Microsoft's marks were
 withdrawn on trademark grounds and Stata was never included - so they get drawn
-marks at the same weight and size. A grid where four tiles are visibly missing
-their glyph looks broken; a grid drawn to one standard looks deliberate.
-
-No third-party widgets and no remote images: committed SVGs, swapped by
-prefers-color-scheme, so the page cannot break when someone else's service does.
+marks at the same weight and size.
 """
 import pathlib
 import re
@@ -26,6 +28,18 @@ THEMES = {
     "dark":  dict(ink="#e6edf3", mute="#8b98a5", rule="#2a3441", accent="#b39ddb",
                   card="#0d1117", cardline="#242c36"),
 }
+
+# The disciplines, named as work rather than as job titles. Between them these
+# cover valuation, M&A, banking, strategy/consulting, operating analysis and
+# economics without the page ever asking for a job.
+DISCIPLINES = ["VALUATION", "M&amp;A", "CAPITAL MARKETS",
+               "STRATEGY", "OPERATIONS", "ECONOMICS"]
+
+TICKER = [
+    "Zepto &#8212; $3.8bn base case against a $7.0bn private mark",
+    "Sun Pharma / Organon &#8212; pass on the spread at 93.9% implied completion",
+    "PayPal &#8212; $60.50 below the floor of all three methods",
+]
 
 
 def logo_path(slug):
@@ -59,18 +73,45 @@ TOOLS = [
 
 
 def header(t):
-    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="104" viewBox="0 0 {W} 104" role="img" aria-label="Shaswat Sharma">
+    """Name, an animated findings ticker, and the disciplines strip."""
+    n = len(TICKER)
+    dur = 15
+    step = 100 / n
+    # each line fades up, holds, fades out inside its own slot
+    keys = ("0%,{a}%{{opacity:0}} {b}%,{c}%{{opacity:1}} {d}%,100%{{opacity:0}}")
+    css = []
+    for i in range(n):
+        s = i * step
+        css.append(f".t{i}{{animation:k{i} {dur}s infinite}}")
+        css.append("@keyframes k" + str(i) + "{" + keys.format(
+            a=round(s + 0.1, 2), b=round(s + 2, 2),
+            c=round(s + step - 4, 2), d=round(s + step - 2, 2)) + "}")
+    cellw = W / len(DISCIPLINES)
+    cells = []
+    for i, d in enumerate(DISCIPLINES):
+        cx = i * cellw + cellw / 2
+        cells.append(f'<text x="{cx:.1f}" y="150" font-size="10.5" letter-spacing="1.6" '
+                     f'fill="{t["mute"]}" text-anchor="middle">{d}</text>')
+        if i:
+            cells.append(f'<rect x="{i*cellw:.1f}" y="131" width="1" height="26" fill="{t["cardline"]}"/>')
+    ticker = "".join(
+        f'<text class="t{i}" x="2" y="76" font-size="14" fill="{t["mute"]}" opacity="0">{s}</text>'
+        for i, s in enumerate(TICKER))
+    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="168" viewBox="0 0 {W} 168" role="img" aria-label="Shaswat Sharma">
+  <style>{"".join(css)}</style>
   <g font-family="{MONO}">
-    <text x="0" y="42" font-size="34" font-weight="600" letter-spacing="-0.5" fill="{t['ink']}">shaswat sharma</text>
-    <text x="2" y="74" font-size="14.5" letter-spacing="0.2" fill="{t['mute']}">valuation &#183; m&amp;a &#183; capital markets &#183; applied economics &#183; live transactions</text>
-    <rect x="0" y="95" width="{W}" height="1" fill="{t['rule']}"/>
+    <text x="0" y="44" font-size="36" font-weight="600" letter-spacing="-0.6" fill="{t['ink']}">Shaswat Sharma</text>
+    {ticker}
+    <rect x="0" y="98" width="{W}" height="1" fill="{t['rule']}"/>
+    <rect x="0" y="118" width="{W}" height="1" fill="{t['rule']}"/>
+    {"".join(cells)}
+    <rect x="0" y="164" width="{W}" height="1" fill="{t['rule']}"/>
   </g>
 </svg>
 """
 
 
 def toolkit(t):
-    """A bordered grid of large tool marks. Deliberately high on the page."""
     cols, tw, th = 6, W / 6, 112
     rows = (len(TOOLS) + cols - 1) // cols
     H = rows * th
@@ -80,10 +121,9 @@ def toolkit(t):
         r, c = divmod(i, cols)
         rx, ry = c * tw, r * th
         gx, gy = rx + tw / 2, ry + 44
-        s = 1.75                                  # 24px glyph -> 42px
-        mark = (f'<g transform="translate({gx-21:.1f},{gy-21:.1f}) scale({s})">'
+        mark = (f'<g transform="translate({gx-21:.1f},{gy-21:.1f}) scale(1.75)">'
                 f'<path d="{logo_path(slug)}" fill="{t["accent"]}"/></g>' if slug else
-                f'<g transform="translate({gx-21:.1f},{gy-21:.1f}) scale({s})">'
+                f'<g transform="translate({gx-21:.1f},{gy-21:.1f}) scale(1.75)">'
                 f'{DRAWN[key].format(c=t["accent"])}</g>')
         body.append(mark)
         body.append(f'<text x="{gx:.1f}" y="{ry+86}" font-size="12.5" fill="{t["ink"]}" '
