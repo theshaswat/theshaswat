@@ -1,15 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1000" height="176" viewBox="0 0 1000 176" role="img" aria-label="Shaswat Sharma">
   <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
     <text x="0" y="52" font-size="38" font-weight="600" letter-spacing="-0.4" fill="#e6edf3">Shaswat Sharma</text>
-    <text x="2" y="86" font-size="15.5" fill="#8b98a5">Valuation and market-structure research on live transactions</text>
+    <text x="2" y="86" font-size="15.5" fill="#8b98a5">Valuation, deal analysis and market structure &#8212; on transactions that are still live</text>
     <rect x="2" y="112" width="86" height="2.5" fill="#b39ddb"/>
-    <text x="2" y="146" font-size="12.5" letter-spacing="1.7" fill="#8b98a5">PRE-IPO MARKS &#183; PENDING MERGERS &#183; CONTESTED BIDS</text>
+    <text x="2" y="146" font-size="12" letter-spacing="1.5" fill="#8b98a5">PRE-IPO MARKS &#183; PENDING MERGERS &#183; CONTESTED BIDS &#183; UNIT ECONOMICS</text>
 
     <rect x="622" y="108" width="330" height="9" rx="4.5" fill="#4a3f6b"/>
     <path d="M 734.2 101 L 745.2 112.5 L 734.2 124 L 723.2 112.5 Z" fill="#b39ddb"/>
     <text x="622" y="92" font-size="10.5" letter-spacing="1.2" fill="#8b98a5">BEAR</text>
     <text x="734.2" y="92" font-size="10.5" letter-spacing="1.2" fill="#b39ddb" text-anchor="middle">BASE</text>
     <text x="952" y="92" font-size="10.5" letter-spacing="1.2" fill="#8b98a5" text-anchor="end">BULL</text>
-    <text x="952" y="142" font-size="10.5" fill="#8b98a5" text-anchor="end">an independent range, built before the market's was consulted</text>
+    <text x="952" y="142" font-size="10.5" fill="#8b98a5" text-anchor="end">an independent range, built before the market&#8217;s was consulted</text>
   </g>
 </svg>

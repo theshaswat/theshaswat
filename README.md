@@ -1,7 +1,9 @@
-<picture><source media="(prefers-color-scheme: dark)" srcset="assets/dark/header.svg"/><img src="assets/header.svg" alt="Shaswat Sharma — valuation and market-structure research on live transactions"/></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/dark/header.svg"/><img src="assets/header.svg" alt="Shaswat Sharma — valuation, deal analysis and market structure"/></picture>
 
 <a href="mailto:shaswatsharma.work@gmail.com"><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/EMAIL-0d1117?style=flat-square&logo=maildotru&logoColor=ffffff"/><img src="https://img.shields.io/badge/EMAIL-ffffff?style=flat-square&logo=maildotru&logoColor=0f172a" alt="Email"/></picture></a>
 <a href="https://www.linkedin.com/in/shaswatsharma49"><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/LINKEDIN-0d1117?style=flat-square&logo=linkedin&logoColor=ffffff"/><img src="https://img.shields.io/badge/LINKEDIN-ffffff?style=flat-square&logo=linkedin&logoColor=0f172a" alt="LinkedIn"/></picture></a>
+
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/dark/toolkit.svg"/><img src="assets/toolkit.svg" alt="Toolkit — Excel, Python, pandas, NumPy, statsmodels, R, Stata, scikit-learn, SQL, Power BI, Jupyter"/></picture>
 
 Primary filings read directly, numbers reconciled before they are interpreted, and models a
 reader can recalculate rather than take on trust. Each project ships the way the work would ship
@@ -22,7 +24,7 @@ order value, the binding constraint was never store density: Zepto runs the high
 store per day of the three (1,618) and the weakest basket (₹388, against ₹518 and ₹508). About
 4 percentage points of the headline cut is rupee depreciation rather than fundamentals.
 
-<sub>9 notebooks · 9-tab Excel model recalculated cell-by-cell against the Python engine · 8 primary sources read directly, including the 690-page DRHP · every figure traced to one registry</sub>
+`relative valuation` `unit economics` `scenario & sensitivity` `Excel` `Python` `pandas`
 
 ### [Sun Pharma / Organon — Merger Arbitrage](https://github.com/theshaswat/sunpharma-organon-merger-arbitrage)
 
@@ -35,7 +37,7 @@ mean annualised 0.07% against a 4.62% risk-free rate — the position is not pai
 carries. Sun Pharma's own announcement CAR was +9.6% and statistically significant, which is the
 evidence that cuts hardest against the standalone valuation.
 
-<sub>Market-model event study · GARCH(1,1) volatility regimes · cross-market Granger causality built around non-overlapping NSE/NYSE hours · Black-Scholes priced from first principles after testing and rejecting the listed options chain</sub>
+`DCF & reverse-DCF` `event study` `GARCH(1,1)` `Granger causality` `Monte Carlo` `Black-Scholes` `statsmodels` `Python`
 
 ### [PayPal — Fairness Valuation vs. the Stripe/Advent Bid](https://github.com/theshaswat/paypal-stripe-advent-ma-valuation)
 
@@ -47,22 +49,9 @@ A reverse DCF makes the same point from the other side: the $47.37 unaffected cl
 or five straight years of −11.6% revenue decline — neither consistent with reported results or
 guidance. That reads the pre-news price as a sentiment floor, not an intrinsic-value anchor.
 
-<sub>Built in the 48 hours after Reuters broke the story · deal terms unconfirmed throughout, and treated as unconfirmed rather than assumed</sub>
+`DCF` `trading comps` `precedent transactions` `sources & uses` `football field` `Excel` `Python`
 
-<picture><source media="(prefers-color-scheme: dark)" srcset="assets/dark/s-toolkit.svg"/><img src="assets/s-toolkit.svg" alt="02 — Toolkit"/></picture>
-
-![Excel](https://img.shields.io/badge/Excel-334155?style=flat-square)
-![Python](https://img.shields.io/badge/Python-334155?style=flat-square&logo=python&logoColor=white)
-![pandas](https://img.shields.io/badge/pandas-334155?style=flat-square&logo=pandas&logoColor=white)
-![NumPy](https://img.shields.io/badge/NumPy-334155?style=flat-square&logo=numpy&logoColor=white)
-![statsmodels](https://img.shields.io/badge/statsmodels-334155?style=flat-square)
-![R](https://img.shields.io/badge/R-334155?style=flat-square&logo=r&logoColor=white)
-![Stata](https://img.shields.io/badge/Stata-334155?style=flat-square)
-![scikit-learn](https://img.shields.io/badge/scikit--learn-334155?style=flat-square&logo=scikitlearn&logoColor=white)
-![SQL](https://img.shields.io/badge/SQL-334155?style=flat-square)
-![Power BI](https://img.shields.io/badge/Power%20BI-334155?style=flat-square)
-
-<picture><source media="(prefers-color-scheme: dark)" srcset="assets/dark/s-method.svg"/><img src="assets/s-method.svg" alt="03 — How the work is built"/></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/dark/s-method.svg"/><img src="assets/s-method.svg" alt="02 — How the work is built"/></picture>
 
 One registry holds every externally-sourced figure, tagged by provenance tier; nothing else
 contains a typed-in number, so the memo, the notebooks, the deck and the model cannot drift
@@ -75,5 +64,12 @@ prove they hold the same document the figures were read from.
 Limitations are written down rather than omitted, including corrections made mid-analysis where
 an earlier draft was wrong. Two of the three recorded in the Zepto memo are errors a reader
 working from secondary coverage would reproduce.
+
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/dark/s-next.svg"/><img src="assets/s-next.svg" alt="03 — Next"/></picture>
+
+Work in progress extends the same standard to a wider toolset: SQL-backed data pipelines so the
+registry is queried rather than typed, econometric work carried in R and Stata alongside Python,
+and a reporting layer in Power BI. Each will ship with the same verification suite and the same
+written limitations as the three above.
 
 <sub>Independent research. Not investment advice.</sub>
