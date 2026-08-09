@@ -61,15 +61,35 @@ DRAWN = {
     "statsmodels": '<path d="M2 19c5 0 4-13 10-13s5 13 10 13" fill="none" stroke="{c}" '
                    'stroke-width="1.6" stroke-linecap="round"/>'
                    '<path d="M12 6v13" stroke="{c}" stroke-width="1.1" stroke-dasharray="2 2"/>',
+    "tableau": '<rect x="10.5" y="2" width="3" height="20" fill="{c}"/>'
+               '<rect x="2" y="10.5" width="20" height="3" fill="{c}"/>',
+    "matplotlib": '<path d="M3 3v18h18" fill="none" stroke="{c}" stroke-width="1.6" '
+                  'stroke-linecap="round"/>'
+                  '<path d="M6 17l4-6 4 3 5-9" fill="none" stroke="{c}" stroke-width="1.7" '
+                  'stroke-linecap="round" stroke-linejoin="round"/>',
+    "vba": '<path d="M9 3c-2.5 0-2.5 2.6-2.5 4.5S6.5 12 4 12c2.5 0 2.5 2.6 2.5 4.5S6.5 21 9 21" '
+           'fill="none" stroke="{c}" stroke-width="1.6" stroke-linecap="round"/>'
+           '<path d="M15 3c2.5 0 2.5 2.6 2.5 4.5S17.5 12 20 12c-2.5 0-2.5 2.6-2.5 4.5S17.5 21 15 21" '
+           'fill="none" stroke="{c}" stroke-width="1.6" stroke-linecap="round"/>',
+    "powerpoint": '<rect x="2.5" y="3.5" width="19" height="13" rx="1.2" fill="none" '
+                  'stroke="{c}" stroke-width="1.6"/>'
+                  '<path d="M12 16.5V20M8.5 20h7" stroke="{c}" stroke-width="1.5" '
+                  'stroke-linecap="round"/>'
+                  '<rect x="6" y="10" width="2.6" height="4" fill="{c}"/>'
+                  '<rect x="10.7" y="7.5" width="2.6" height="6.5" fill="{c}"/>'
+                  '<rect x="15.4" y="9" width="2.6" height="5" fill="{c}"/>',
 }
 
 TOOLS = [
     ("excel", "Excel", None), ("python", "Python", "python"),
     ("pandas", "pandas", "pandas"), ("numpy", "NumPy", "numpy"),
-    ("statsmodels", "statsmodels", None), ("r", "R", "r"),
-    ("stata", "Stata", None), ("scikitlearn", "scikit-learn", "scikitlearn"),
-    ("postgresql", "SQL", "postgresql"), ("powerbi", "Power BI", None),
-    ("jupyter", "Jupyter", "jupyter"),
+    ("scipy", "SciPy", "scipy"), ("statsmodels", "statsmodels", None),
+    ("r", "R", "r"), ("stata", "Stata", None),
+    ("scikitlearn", "scikit-learn", "scikitlearn"), ("postgresql", "SQL", "postgresql"),
+    ("powerbi", "Power BI", None), ("tableau", "Tableau", None),
+    ("matplotlib", "matplotlib", None), ("jupyter", "Jupyter", "jupyter"),
+    ("latex", "LaTeX", "latex"), ("git", "Git", "git"),
+    ("vba", "VBA", None), ("powerpoint", "PowerPoint", None),
 ]
 
 
