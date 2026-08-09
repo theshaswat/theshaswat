@@ -3,7 +3,7 @@
 <a href="mailto:shaswatsharma.work@gmail.com"><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/EMAIL-0d1117?style=flat-square&logo=maildotru&logoColor=ffffff"/><img src="https://img.shields.io/badge/EMAIL-ffffff?style=flat-square&logo=maildotru&logoColor=0f172a" alt="Email"/></picture></a>
 <a href="https://www.linkedin.com/in/shaswatsharma49"><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/LINKEDIN-0d1117?style=flat-square&logo=linkedin&logoColor=ffffff"/><img src="https://img.shields.io/badge/LINKEDIN-ffffff?style=flat-square&logo=linkedin&logoColor=0f172a" alt="LinkedIn"/></picture></a>
 
-<picture><source media="(prefers-color-scheme: dark)" srcset="assets/dark/toolkit.svg"/><img src="assets/toolkit.svg" alt="Toolkit — Excel, Python, pandas, NumPy, statsmodels, R, Stata, scikit-learn, SQL, Power BI, Jupyter"/></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/dark/toolkit.svg"/><img src="assets/toolkit.svg" alt="Toolkit — Excel, Python, pandas, NumPy, SciPy, statsmodels, R, Stata, scikit-learn, SQL, Power BI, Tableau, matplotlib, Jupyter, LaTeX, Git, VBA, PowerPoint"/></picture>
 
 <picture><source media="(prefers-color-scheme: dark)" srcset="assets/dark/s-work.svg"/><img src="assets/s-work.svg" alt="Selected work"/></picture>
 
