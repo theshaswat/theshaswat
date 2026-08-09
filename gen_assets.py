@@ -32,7 +32,7 @@ THEMES = {
 # The disciplines, named as work rather than as job titles. Between them these
 # cover valuation, M&A, banking, strategy/consulting, operating analysis and
 # economics without the page ever asking for a job.
-DISCIPLINES = ["VALUATION", "M&amp;A", "CAPITAL MARKETS",
+DISCIPLINES = ["FINANCE", "VALUATION", "M&amp;A", "CAPITAL MARKETS",
                "STRATEGY", "OPERATIONS", "ECONOMICS"]
 
 TICKER = [
