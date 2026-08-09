@@ -1,4 +1,4 @@
-<picture><source media="(prefers-color-scheme: dark)" srcset="assets/dark/header.svg"/><img src="assets/header.svg" alt="Shaswat Sharma — valuation, m&a, capital markets, applied economics"/></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/dark/header.svg"/><img src="assets/header.svg" alt="Shaswat Sharma — finance, valuation, M&A, capital markets, strategy, operations, economics"/></picture>
 
 <a href="mailto:shaswatsharma.work@gmail.com"><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/EMAIL-0d1117?style=flat-square&logo=maildotru&logoColor=ffffff"/><img src="https://img.shields.io/badge/EMAIL-ffffff?style=flat-square&logo=maildotru&logoColor=0f172a" alt="Email"/></picture></a>
 <a href="https://www.linkedin.com/in/shaswatsharma49"><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/LINKEDIN-0d1117?style=flat-square&logo=linkedin&logoColor=ffffff"/><img src="https://img.shields.io/badge/LINKEDIN-ffffff?style=flat-square&logo=linkedin&logoColor=0f172a" alt="LinkedIn"/></picture></a>
@@ -8,34 +8,39 @@
 <picture><source media="(prefers-color-scheme: dark)" srcset="assets/dark/s-work.svg"/><img src="assets/s-work.svg" alt="Selected work"/></picture>
 
 <table>
-<tr>
-<td colspan="2">
-<h3><a href="https://github.com/theshaswat/zepto-pre-ipo-valuation">Zepto — Pre-IPO Valuation</a></h3>
-<b>$3.8bn base case against a $7.0bn private mark.</b> Built before the roadshow range was consulted; the resulting $2.7–5.5bn range brackets what institutions actually indicated ($3.0–3.5bn domestic, $4.5bn foreign).
-<br/><br/>
-Zepto, Blinkit and Instamart disclose on three incompatible bases — 1P inventory against 3P commission — making headline revenue comparisons wrong by roughly 4.3x. Restated onto net order value, the binding constraint was never store density: Zepto runs the highest orders per store per day of the three (1,618) and the weakest basket (₹388, against ₹518 and ₹508).
-<br/><br/>
-<code>relative valuation</code> <code>unit economics</code> <code>scenario &amp; sensitivity</code> <code>fx decomposition</code> <code>Excel</code> <code>Python</code>
-</td>
-</tr>
-<tr>
-<td width="50%" valign="top">
-<h3><a href="https://github.com/theshaswat/sunpharma-organon-merger-arbitrage">Sun Pharma / Organon — Merger Arbitrage</a></h3>
-<b>Pass on the spread.</b> Standalone DCF puts Organon at $6.90 against a $14.00 offer — $1.86bn of synergy management never disclosed, requiring 3.87% revenue growth against an actual −0.38% two-year CAGR.
-<br/><br/>
-The spread implies 93.9% completion. A seeded 100,000-path Monte Carlo returns a mean annualised 0.07% against a 4.62% risk-free rate: not paid for the risk it carries.
-<br/><br/>
-<code>DCF &amp; reverse-DCF</code> <code>event study</code> <code>GARCH(1,1)</code> <code>Granger causality</code> <code>Monte Carlo</code> <code>Black-Scholes</code> <code>statsmodels</code>
-</td>
-<td width="50%" valign="top">
-<h3><a href="https://github.com/theshaswat/paypal-stripe-advent-ma-valuation">PayPal — Fairness Valuation</a></h3>
-<b>$60.50 sits below the floor of all three methods.</b> DCF bear $73.85, trading comps $76.69, precedent floor $64.88. Agreeing with the offer needs a 13.4% discount rate against a calculated 9.67% WACC.
-<br/><br/>
-A reverse DCF makes the same point from the other side: the $47.37 unaffected close implies ~17%, or five straight years of −11.6% revenue decline — neither consistent with reported results.
-<br/><br/>
-<code>DCF</code> <code>trading comps</code> <code>precedent transactions</code> <code>sources &amp; uses</code> <code>football field</code> <code>Excel</code>
-</td>
-</tr>
+<tr><td width="100%">
+
+### [Zepto — Pre-IPO Valuation](https://github.com/theshaswat/zepto-pre-ipo-valuation)
+
+**$3.8bn base case against a $7.0bn private mark.** Built before the roadshow range was consulted; the resulting $2.7–5.5bn range brackets what institutions actually indicated ($3.0–3.5bn domestic, $4.5bn foreign).
+
+Zepto, Blinkit and Instamart disclose on three incompatible bases — 1P inventory against 3P commission — making headline revenue comparisons wrong by roughly 4.3x. Restated onto net order value, the binding constraint was never store density: Zepto runs the highest orders per store per day of the three (1,618) and the weakest basket (₹388, against ₹518 and ₹508). About 4 percentage points of the headline cut is rupee depreciation rather than fundamentals.
+
+`relative valuation` `unit economics` `scenario & sensitivity` `fx decomposition` `Excel` `Python` `pandas`
+
+</td></tr>
+<tr><td width="100%">
+
+### [Sun Pharma / Organon — Merger Arbitrage](https://github.com/theshaswat/sunpharma-organon-merger-arbitrage)
+
+**Pass on the spread.** Standalone DCF puts Organon at $6.90 against a $14.00 offer — $1.86bn of synergy management never disclosed, requiring 3.87% revenue growth against an actual −0.38% two-year CAGR.
+
+The spread implies 93.9% completion probability. A seeded 100,000-path Monte Carlo returns a mean annualised 0.07% against a 4.62% risk-free rate: the position is not paid for the risk it carries. Sun Pharma's own announcement CAR was +9.6% and statistically significant, which is the evidence that cuts hardest against the standalone valuation.
+
+`DCF & reverse-DCF` `event study` `GARCH(1,1)` `Granger causality` `Monte Carlo` `Black-Scholes` `statsmodels`
+
+</td></tr>
+<tr><td width="100%">
+
+### [PayPal — Fairness Valuation vs. the Stripe/Advent Bid](https://github.com/theshaswat/paypal-stripe-advent-ma-valuation)
+
+**$60.50 sits below the floor of all three methods.** DCF bear case $73.85, trading comps $76.69, precedent-transaction floor $64.88. Making the base case agree with the offer requires a 13.4% discount rate against a calculated 9.67% WACC.
+
+A reverse DCF makes the same point from the other side: the $47.37 unaffected close implies ~17%, or five straight years of −11.6% revenue decline — neither consistent with reported results or guidance. That reads the pre-news price as a sentiment floor, not an intrinsic-value anchor.
+
+`DCF` `trading comps` `precedent transactions` `sources & uses` `football field` `Excel` `Python`
+
+</td></tr>
 </table>
 
 <picture><source media="(prefers-color-scheme: dark)" srcset="assets/dark/s-method.svg"/><img src="assets/s-method.svg" alt="How it's built"/></picture>
