@@ -40,6 +40,7 @@ TICKER = [
     "Zepto &#8212; $3.8bn base case against a $7.0bn private mark",
     "Sun Pharma / Organon &#8212; pass on the spread at 93.9% implied completion",
     "PayPal &#8212; $60.50 below the floor of all three methods",
+    "ACC &#8212; a 20% profit miss moved the stock more than a 68% miss did",
 ]
 
 
@@ -108,7 +109,7 @@ TOOLS = [
 def header(t):
     """Name, an animated findings ticker, and the disciplines strip."""
     n = len(TICKER)
-    dur = 15
+    dur = n * 5
     step = 100 / n
     # each line fades up, holds, fades out inside its own slot
     keys = ("0%,{a}%{{opacity:0}} {b}%,{c}%{{opacity:1}} {d}%,100%{{opacity:0}}")
@@ -187,19 +188,30 @@ CARDS = [
     ("PAYPAL", "Fairness Valuation",
      "$60.50 below the floor", "of all three methods",
      "DCF &#183; comps &#183; precedents"),
+    ("ACC LIMITED", "Dividend Event Study",
+     "Smaller miss, bigger move", "-5.7% CAR on a 20% miss vs +0.2% on a 68% miss",
+     "event study &#183; market model &#183; Fama-French"),
 ]
 
 
 def showcase(t):
-    """Three project cards with the spotlight rotating between them.
+    """Project cards with the spotlight rotating between them.
 
     The motion is the same idea as a record carousel, at a size that stays
     readable: the cards never move position, only the emphasis does. Nothing
     slides off screen, so a reader who arrives mid-cycle has still seen
-    everything - which a true carousel cannot promise."""
+    everything - which a true carousel cannot promise.
+
+    Up to three cards sit in a single row, at the width the type was sized
+    for. Four become a 2x2 grid rather than one cramped row - narrowing
+    every card by a quarter to fit one more in is how a showcase like this
+    quietly starts clipping text, and a lone fourth card stranded under a
+    row of three would look unfinished rather than added to on purpose."""
     n, H = len(CARDS), 176
     gap = 10
-    cw = (W - gap * (n - 1)) / n
+    cols = n if n <= 3 else 2
+    rows = -(-n // cols)  # ceil
+    cw = (W - gap * (cols - 1)) / cols
     dur = n * 4
     step = 100 / n
     css = []
@@ -215,23 +227,26 @@ def showcase(t):
                    f"{s+step-2:.2f}%,100%{{stroke:{t['cardline']}}}}}")
     body = []
     for i, (tag, title, head, sub, meth) in enumerate(CARDS):
-        x = i * (cw + gap)
+        r, c = divmod(i, cols)
+        x = c * (cw + gap)
+        y0 = r * (H + gap)
         body.append(
             f'<g class="c{i}">'
-            f'<rect class="b{i}" x="{x+0.5:.1f}" y="0.5" width="{cw-1:.1f}" height="{H-1}" '
+            f'<rect class="b{i}" x="{x+0.5:.1f}" y="{y0+0.5:.1f}" width="{cw-1:.1f}" height="{H-1}" '
             f'rx="7" fill="{t["card"]}" stroke="{t["cardline"]}" stroke-width="1.5"/>'
-            f'<text x="{x+22:.1f}" y="34" font-size="10.5" letter-spacing="1.6" '
+            f'<text x="{x+22:.1f}" y="{y0+34:.1f}" font-size="10.5" letter-spacing="1.6" '
             f'fill="{t["accent"]}">{tag}</text>'
-            f'<text x="{x+22:.1f}" y="58" font-size="15" font-weight="600" '
+            f'<text x="{x+22:.1f}" y="{y0+58:.1f}" font-size="15" font-weight="600" '
             f'fill="{t["ink"]}">{title}</text>'
-            f'<text x="{x+22:.1f}" y="96" font-size="19" font-weight="600" '
+            f'<text x="{x+22:.1f}" y="{y0+96:.1f}" font-size="19" font-weight="600" '
             f'fill="{t["ink"]}">{head}</text>'
-            f'<text x="{x+22:.1f}" y="118" font-size="12" fill="{t["mute"]}">{sub}</text>'
-            f'<rect x="{x+22:.1f}" y="136" width="34" height="1.5" fill="{t["accent"]}"/>'
-            f'<text x="{x+22:.1f}" y="160" font-size="10.5" fill="{t["mute"]}">{meth}</text>'
+            f'<text x="{x+22:.1f}" y="{y0+118:.1f}" font-size="12" fill="{t["mute"]}">{sub}</text>'
+            f'<rect x="{x+22:.1f}" y="{y0+136:.1f}" width="34" height="1.5" fill="{t["accent"]}"/>'
+            f'<text x="{x+22:.1f}" y="{y0+160:.1f}" font-size="10.5" fill="{t["mute"]}">{meth}</text>'
             f'</g>')
-    return (f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" '
-            f'viewBox="0 0 {W} {H}" role="img" aria-label="Selected work">'
+    total_h = rows * H + (rows - 1) * gap
+    return (f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{total_h}" '
+            f'viewBox="0 0 {W} {total_h}" role="img" aria-label="Selected work">'
             f'<style>{"".join(css)}</style>'
             f'<g font-family="{MONO}">' + "".join(body) + "</g></svg>\n")
 
