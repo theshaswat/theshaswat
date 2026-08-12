@@ -43,6 +43,17 @@ A reverse DCF makes the same point from the other side: the $47.37 unaffected cl
 `DCF` `trading comps` `precedent transactions` `sources & uses` `football field` `Excel` `Python`
 
 </td></tr>
+<tr><td width="100%">
+
+### [ACC Limited — Dividend vs. Earnings Event Study](https://github.com/theshaswat/acc-dividend-event-study)
+
+**A 68% profit miss moved the stock less than a 20% miss did the year before.** Same Rs 7.50 dividend, bundled with results both times — the reaction tracked the surprise, not the size of the miss.
+
+FY25's decline arrived with no precedent and produced a significant, lasting −5.7% three-day CAR (market model), −5.8% under Fama-French three-factor. FY26's much larger decline had been signalled for months; its −3.0% initial reaction had fully reverted to +0.2% within two weeks — consistent with the cost pressure being priced in ahead of the print.
+
+`event study` `market model` `Fama-French 3-factor` `Brown-Warner t-test` `Python` `statsmodels`
+
+</td></tr>
 </table>
 
 <picture><source media="(prefers-color-scheme: dark)" srcset="assets/dark/s-method.svg"/><img src="assets/s-method.svg" alt="How it's built"/></picture>
