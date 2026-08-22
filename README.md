@@ -7,7 +7,7 @@
 
 <picture><source media="(prefers-color-scheme: dark)" srcset="assets/dark/s-work.svg"/><img src="assets/s-work.svg" alt="Selected work"/></picture>
 
-<picture><source media="(prefers-color-scheme: dark)" srcset="assets/dark/showcase.svg"/><img src="assets/showcase.svg" alt="Zepto — $3.8bn base case against a $7.0bn private mark · Sun Pharma/Organon — pass on the spread · PayPal — $60.50 below the floor of all three methods · ACC — a 20% profit miss moved the stock more than a 68% miss did"/></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/dark/showcase.svg"/><img src="assets/showcase.svg" alt="Zepto — $3.8bn base case against a $7.0bn private mark · Sun Pharma/Organon — pass on the spread · PayPal — $60.50 below the floor of all three methods · ACC — a 20% profit miss moved the stock more than a 68% miss did · Situational Awareness — put-linked exposure fell from 62% of gross to 0.03% the quarter before the collapse"/></picture>
 
 <table>
 <tr><td width="100%">
@@ -54,6 +54,17 @@ FY25's decline arrived with no precedent and produced a significant, lasting −
 `event study` `market model` `Fama-French 3-factor` `Brown-Warner t-test` `Python` `statsmodels`
 
 </td></tr>
+<tr><td width="100%">
+
+### [Situational Awareness — Forced-Deleveraging Forensics](https://github.com/theshaswat/situational-awareness-unwind)
+
+**Put-linked exposure fell from 62% of gross to 0.03% in the quarter before the fund lost 67%.** The published accounts of the July 2026 collapse attribute it to 4x leverage. Seven quarters of 13F filings show the fund also entered July with no disclosed downside protection, having held $8.46bn of puts three months earlier; two positions, Micron and TSMC, flipped from a put to a larger long on the same issuer between filings.
+
+Days-to-liquidate built from position size against trailing volume put the book at 1.55 days, which reads as liquid. The single name it flagged, Core Scientific at 9.25 days, is the one a Schedule 13D/A shows still being sold by block trade five days after the main unwind, 12.2% below its mid-July prints. Tested out-of-sample the screen initially failed: Berkshire's concentration exceeds Melvin Capital's before GameStop, because Melvin's risk sat in swaps a 13F cannot see. That result is why the live screen scores concentration trend alongside level rather than level alone.
+
+`13F reconstruction` `liquidity & days-to-liquidate` `return attribution` `out-of-sample validation` `SEC EDGAR` `Python`
+
+</td></tr>
 </table>
 
 <picture><source media="(prefers-color-scheme: dark)" srcset="assets/dark/s-method.svg"/><img src="assets/s-method.svg" alt="How it's built"/></picture>
@@ -75,6 +86,6 @@ working from secondary coverage would reproduce.
 Work in progress extends the same standard to a wider toolset: SQL-backed pipelines so the
 registry is queried rather than typed, econometric work carried in R and Stata alongside Python,
 and a reporting layer in Power BI. Each ships with the same verification suite and the same
-written limitations as the three above.
+written limitations as the work above.
 
 <sub>Independent research. Not investment advice.</sub>
