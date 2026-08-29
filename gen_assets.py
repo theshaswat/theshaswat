@@ -41,6 +41,8 @@ TICKER = [
     "Sun Pharma / Organon &#8212; pass on the spread at 93.9% implied completion",
     "PayPal &#8212; $60.50 below the floor of all three methods",
     "ACC &#8212; a 20% profit miss moved the stock more than a 68% miss did",
+    "Situational Awareness &#8212; put-linked exposure fell from 62% of gross to 0.03%",
+    "Olist &#8212; 55% of won sellers never sold a single item",
 ]
 
 
@@ -191,6 +193,12 @@ CARDS = [
     ("ACC LIMITED", "Dividend Event Study",
      "Smaller miss, bigger move", "-5.7% CAR on a 20% miss vs +0.2% on a 68% miss",
      "event study &#183; market model &#183; Fama-French"),
+    ("SITUATIONAL AWARENESS", "Forced-Deleveraging Forensics",
+     "62% of gross to 0.03%", "put-linked exposure, the quarter before the collapse",
+     "13F reconstruction &#183; liquidity &#183; attribution"),
+    ("OLIST MARKETPLACE", "Unit Economics &amp; Cross-Sell",
+     "55% of won sellers never sold", "a single item. Winning is not activating.",
+     "cohort LTV &#183; funnel &#183; propensity"),
 ]
 
 
@@ -268,7 +276,8 @@ for name, theme in THEMES.items():
     out = ROOT / "assets" / ("dark" if name == "dark" else "")
     out.mkdir(parents=True, exist_ok=True)
     (out / "header.svg").write_text(header(theme))
-    (out / "toolkit.svg").write_text(toolkit(theme))
+    if (ROOT / ".icons").is_dir():
+        (out / "toolkit.svg").write_text(toolkit(theme))
     (out / "showcase.svg").write_text(showcase(theme))
     for title, slug in SECTIONS:
         (out / f"{slug}.svg").write_text(section(theme, title))

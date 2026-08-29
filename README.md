@@ -7,7 +7,7 @@
 
 <picture><source media="(prefers-color-scheme: dark)" srcset="assets/dark/s-work.svg"/><img src="assets/s-work.svg" alt="Selected work"/></picture>
 
-<picture><source media="(prefers-color-scheme: dark)" srcset="assets/dark/showcase.svg"/><img src="assets/showcase.svg" alt="Zepto — $3.8bn base case against a $7.0bn private mark · Sun Pharma/Organon — pass on the spread · PayPal — $60.50 below the floor of all three methods · ACC — a 20% profit miss moved the stock more than a 68% miss did · Situational Awareness — put-linked exposure fell from 62% of gross to 0.03% the quarter before the collapse"/></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/dark/showcase.svg"/><img src="assets/showcase.svg" alt="Zepto — $3.8bn base case against a $7.0bn private mark · Sun Pharma/Organon — pass on the spread · PayPal — $60.50 below the floor of all three methods · ACC — a 20% profit miss moved the stock more than a 68% miss did · Situational Awareness — put-linked exposure fell from 62% of gross to 0.03% the quarter before the collapse · Olist — 55% of won sellers never sold a single item"/></picture>
 
 <table>
 <tr><td width="100%">
@@ -65,13 +65,24 @@ Days-to-liquidate built from position size against trailing volume put the book 
 `13F reconstruction` `liquidity & days-to-liquidate` `return attribution` `out-of-sample validation` `SEC EDGAR` `Python`
 
 </td></tr>
+<tr><td width="100%">
+
+### [Olist — Unit Economics, LTV & Cross-Sell Propensity](https://github.com/theshaswat/unit-economics-cac-ltv)
+
+**55% of won sellers never sold a single item.** 842 of 8,000 marketing-qualified leads became signed sellers; only 379 of those ever listed anything. A channel-ROI conversation that stops at win rate is measuring the wrong step — paid search brings in roughly a third fewer leads than organic search (1,586 against 2,296) and still scores higher (0.71 against 0.63) once activation and realised GMV are counted.
+
+The same gap runs through the buyer side. 97% of customers buy exactly once, so cohort margin per customer moves from R$111.41 at first purchase to R$123.45 twelve months later — a 10.8% lift produced entirely by the 3% who return, which makes retention the lever rather than lifetime-value expansion. What separates a profitable segment from an unprofitable one is freight, not price: electronics runs 31.5% margin because freight consumes 68.6% of item price, against 83.0% on watches_gifts at comparable volume, and the Amazon-region states fall to ~40% on distance alone. No dollar CAC is reported, because Olist discloses no marketing spend by channel and no outside benchmark was substituted for it.
+
+`cohort LTV` `acquisition funnel` `contribution margin` `logistic propensity` `out-of-time validation` `scikit-learn` `Plotly`
+
+</td></tr>
 </table>
 
 <picture><source media="(prefers-color-scheme: dark)" srcset="assets/dark/s-method.svg"/><img src="assets/s-method.svg" alt="How it's built"/></picture>
 
 One registry holds every externally-sourced figure, tagged by provenance tier; nothing else
 contains a typed-in number, so the memo, the notebooks, the deck and the model cannot drift
-apart. Each repository carries its own verification suite and runs it in CI on every push — the
+apart. The valuation repositories each carry their own verification suite and run it in CI on every push — the
 Zepto build rebuilds all nine notebooks, the deck, the PDFs and the workbook from source and
 re-audits the result, and the PayPal build asserts every committed output still reproduces
 byte-for-byte. Primary sources are pinned by SHA-256 rather than redistributed, so a reader can
