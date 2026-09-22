@@ -43,6 +43,10 @@ TICKER = [
     "ACC &#8212; a 20% profit miss moved the stock more than a 68% miss did",
     "Situational Awareness &#8212; put-linked exposure fell from 62% of gross to 0.03%",
     "Olist &#8212; 55% of won sellers never sold a single item",
+    "Bank LCR &#8212; the lower ratio sits on the more retail-anchored funding base",
+    "Campaign ROI &#8212; Display clears break-even at no level of spend",
+    "Indirect Tax &#8212; 33.3% exceptions caught, matching the injected rate exactly",
+    "Retail Media &#8212; one marketplace of three discloses the number that matters",
 ]
 
 
@@ -111,7 +115,7 @@ TOOLS = [
 def header(t):
     """Name, an animated findings ticker, and the disciplines strip."""
     n = len(TICKER)
-    dur = n * 5
+    dur = n * 4
     step = 100 / n
     # each line fades up, holds, fades out inside its own slot
     keys = ("0%,{a}%{{opacity:0}} {b}%,{c}%{{opacity:1}} {d}%,100%{{opacity:0}}")
@@ -180,81 +184,125 @@ def toolkit(t):
             f'viewBox="0 0 {W} {H}" role="img" aria-label="Toolkit">' + "".join(body) + "</svg>\n")
 
 
+# (tag, title, headline, sub, methods, index label)
+#
+# The index label is what the reader scans; the rest is what the spotlight
+# shows when it reaches that row. Both come from the same tuple so the list
+# and the panel cannot drift apart.
 CARDS = [
     ("ZEPTO", "Pre-IPO Valuation",
      "$3.8bn base case", "against a $7.0bn private mark",
-     "relative valuation &#183; unit economics"),
+     "relative valuation &#183; unit economics",
+     "Zepto &#8212; Pre-IPO Valuation"),
     ("SUN PHARMA / ORGANON", "Merger Arbitrage",
      "Pass on the spread", "93.9% implied completion, 0.07% expected",
-     "event study &#183; GARCH &#183; Monte Carlo"),
+     "event study &#183; GARCH &#183; Monte Carlo",
+     "Sun Pharma / Organon &#8212; Merger Arbitrage"),
     ("PAYPAL", "Fairness Valuation",
      "$60.50 below the floor", "of all three methods",
-     "DCF &#183; comps &#183; precedents"),
+     "DCF &#183; comps &#183; precedents",
+     "PayPal &#8212; Fairness Valuation"),
     ("ACC LIMITED", "Dividend Event Study",
      "Smaller miss, bigger move", "-5.7% CAR on a 20% miss vs +0.2% on a 68% miss",
-     "event study &#183; market model &#183; Fama-French"),
+     "event study &#183; market model &#183; Fama-French",
+     "ACC Limited &#8212; Dividend Event Study"),
     ("SITUATIONAL AWARENESS", "Forced-Deleveraging Forensics",
      "62% of gross to 0.03%", "put-linked exposure, the quarter before the collapse",
-     "13F reconstruction &#183; liquidity &#183; attribution"),
+     "13F reconstruction &#183; liquidity &#183; attribution",
+     "Situational Awareness &#8212; Unwind Forensics"),
     ("OLIST MARKETPLACE", "Unit Economics &amp; Cross-Sell",
      "55% of won sellers never sold", "a single item. Winning is not activating.",
-     "cohort LTV &#183; funnel &#183; propensity"),
+     "cohort LTV &#183; funnel &#183; propensity",
+     "Olist &#8212; Unit Economics &amp; LTV"),
+    ("HDFC / INDUSIND", "Bank LCR &amp; Funding Concentration",
+     "Lower ratio, better funding", "126.66% LCR on 40.9% wholesale against 115.00% on 33.1%",
+     "Basel III &#183; reconciliation &#183; funding mix",
+     "Bank LCR &amp; Funding Concentration"),
+    ("CAMPAIGN ROI", "Media Spend Simulator",
+     "Display has no break-even", "0.94x incremental ROAS against Shopping's 4.29x",
+     "funnel modelling &#183; break-even &#183; sensitivity",
+     "Campaign ROI &amp; Media Spend Simulator"),
+    ("INDIRECT TAX", "Classification &amp; Reconciliation",
+     "33.3% caught, 33.3% injected", "20 sourced rules across 11 jurisdictions",
+     "GST &#183; VAT &#183; sales &amp; use tax &#183; rules engine",
+     "Indirect Tax Classification Engine"),
+    ("RETAIL MEDIA INDIA", "Monetization Benchmark",
+     "One of three discloses it", "the other two disclose ad spend, its mirror image",
+     "public-disclosure benchmarking",
+     "Retail Media Benchmark, India"),
 ]
 
 
 def showcase(t):
-    """Project cards with the spotlight rotating between them.
+    """A spotlight panel that cycles the work, beside an index of all of it.
 
-    The motion is the same idea as a record carousel, at a size that stays
-    readable: the cards never move position, only the emphasis does. Nothing
-    slides off screen, so a reader who arrives mid-cycle has still seen
-    everything - which a true carousel cannot promise.
+    A grid that shows every project at once stops scaling somewhere around
+    six: ten cards at a readable type size is a wall roughly five times the
+    height of the text it sits above, and a reader has to get past all of it
+    to reach the writing. Ten cards narrow enough to fit in fewer rows clip
+    their own headlines instead.
 
-    Up to three cards sit in a single row, at the width the type was sized
-    for. Four become a 2x2 grid rather than one cramped row - narrowing
-    every card by a quarter to fit one more in is how a showcase like this
-    quietly starts clipping text, and a lone fourth card stranded under a
-    row of three would look unfinished rather than added to on purpose."""
-    n, H = len(CARDS), 176
-    gap = 10
-    cols = n if n <= 3 else 2
-    rows = -(-n // cols)  # ceil
-    cw = (W - gap * (cols - 1)) / cols
+    So the two jobs are split. The panel on the left holds one project at a
+    time and rotates, which is where the motion and the detail go. The column
+    on the right lists every project permanently, with the current one marked,
+    which is where completeness goes - a reader who never waits for a full
+    cycle can still see the whole body of work and count it. The index label
+    and the panel content come from the same tuple, so the list can never
+    fall out of step with what the panel is showing."""
+    n = len(CARDS)
+    pad, row_h, gap = 22, 21, 16
+    left_w = 610
+    rule_x = left_w + gap
+    idx_x = rule_x + gap
+    H = max(236, n * row_h + 2 * pad)
     dur = n * 4
     step = 100 / n
+
     css = []
     for i in range(n):
         s = i * step
-        css.append(f".c{i}{{animation:a{i} {dur}s infinite}}"
-                   f".b{i}{{animation:b{i} {dur}s infinite}}")
-        css.append(f"@keyframes a{i}{{0%,{s+0.1:.2f}%{{opacity:.42}}"
-                   f"{s+2:.2f}%,{s+step-4:.2f}%{{opacity:1}}"
-                   f"{s+step-2:.2f}%,100%{{opacity:.42}}}}")
-        css.append(f"@keyframes b{i}{{0%,{s+0.1:.2f}%{{stroke:{t['cardline']}}}"
-                   f"{s+2:.2f}%,{s+step-4:.2f}%{{stroke:{t['accent']}}}"
-                   f"{s+step-2:.2f}%,100%{{stroke:{t['cardline']}}}}}")
-    body = []
-    for i, (tag, title, head, sub, meth) in enumerate(CARDS):
-        r, c = divmod(i, cols)
-        x = c * (cw + gap)
-        y0 = r * (H + gap)
+        hold_in, hold_out, fade_out = s + 1.2, s + step - 2.4, s + step - 1.2
+        css.append(f".p{i}{{animation:p{i} {dur}s infinite}}"
+                   f".r{i}{{animation:r{i} {dur}s infinite}}"
+                   f".m{i}{{animation:p{i} {dur}s infinite}}")
+        # the spotlight panel and its row marker share one opacity curve
+        css.append(f"@keyframes p{i}{{0%,{s+0.1:.2f}%{{opacity:0}}"
+                   f"{hold_in:.2f}%,{hold_out:.2f}%{{opacity:1}}"
+                   f"{fade_out:.2f}%,100%{{opacity:0}}}}")
+        # the index row itself never disappears - it only takes the accent
+        css.append(f"@keyframes r{i}{{0%,{s+0.1:.2f}%{{fill:{t['mute']}}}"
+                   f"{hold_in:.2f}%,{hold_out:.2f}%{{fill:{t['ink']}}}"
+                   f"{fade_out:.2f}%,100%{{fill:{t['mute']}}}}}")
+
+    body = [f'<rect x="0.5" y="0.5" width="{left_w-1}" height="{H-1}" rx="7" '
+            f'fill="{t["card"]}" stroke="{t["cardline"]}" stroke-width="1.5"/>',
+            f'<rect x="{rule_x}" y="{pad}" width="1" height="{H-2*pad}" '
+            f'fill="{t["cardline"]}"/>']
+
+    for i, (tag, title, head, sub, meth, label) in enumerate(CARDS):
         body.append(
-            f'<g class="c{i}">'
-            f'<rect class="b{i}" x="{x+0.5:.1f}" y="{y0+0.5:.1f}" width="{cw-1:.1f}" height="{H-1}" '
-            f'rx="7" fill="{t["card"]}" stroke="{t["cardline"]}" stroke-width="1.5"/>'
-            f'<text x="{x+22:.1f}" y="{y0+34:.1f}" font-size="10.5" letter-spacing="1.6" '
+            f'<g class="p{i}" opacity="0">'
+            f'<text x="{pad}" y="40" font-size="10.5" letter-spacing="1.6" '
             f'fill="{t["accent"]}">{tag}</text>'
-            f'<text x="{x+22:.1f}" y="{y0+58:.1f}" font-size="15" font-weight="600" '
+            f'<text x="{pad}" y="64" font-size="15" font-weight="600" '
             f'fill="{t["ink"]}">{title}</text>'
-            f'<text x="{x+22:.1f}" y="{y0+96:.1f}" font-size="19" font-weight="600" '
+            f'<text x="{pad}" y="114" font-size="21" font-weight="600" '
             f'fill="{t["ink"]}">{head}</text>'
-            f'<text x="{x+22:.1f}" y="{y0+118:.1f}" font-size="12" fill="{t["mute"]}">{sub}</text>'
-            f'<rect x="{x+22:.1f}" y="{y0+136:.1f}" width="34" height="1.5" fill="{t["accent"]}"/>'
-            f'<text x="{x+22:.1f}" y="{y0+160:.1f}" font-size="10.5" fill="{t["mute"]}">{meth}</text>'
+            f'<text x="{pad}" y="138" font-size="12" fill="{t["mute"]}">{sub}</text>'
+            f'<rect x="{pad}" y="158" width="34" height="1.5" fill="{t["accent"]}"/>'
+            f'<text x="{pad}" y="182" font-size="10.5" fill="{t["mute"]}">{meth}</text>'
+            f'<text x="{pad}" y="{H-20}" font-size="10.5" letter-spacing="1.2" '
+            f'fill="{t["mute"]}">{i+1:02d} / {n:02d}</text>'
             f'</g>')
-    total_h = rows * H + (rows - 1) * gap
-    return (f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{total_h}" '
-            f'viewBox="0 0 {W} {total_h}" role="img" aria-label="Selected work">'
+        ry = pad + i * row_h
+        body.append(
+            f'<rect class="m{i}" x="{idx_x}" y="{ry+2}" width="2" height="13" '
+            f'rx="1" fill="{t["accent"]}" opacity="0"/>'
+            f'<text class="r{i}" x="{idx_x+12}" y="{ry+13}" font-size="10.5" '
+            f'fill="{t["mute"]}">{label}</text>')
+
+    return (f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" '
+            f'viewBox="0 0 {W} {H}" role="img" aria-label="Selected work">'
             f'<style>{"".join(css)}</style>'
             f'<g font-family="{MONO}">' + "".join(body) + "</g></svg>\n")
 
@@ -270,7 +318,8 @@ def section(t, title):
 """
 
 
-SECTIONS = [("Selected work", "s-work"), ("How it's built", "s-method"), ("Next", "s-next")]
+SECTIONS = [("Selected work", "s-work"), ("How it's built", "s-method"),
+            ("Next", "s-next"), ("Activity", "s-activity")]
 
 for name, theme in THEMES.items():
     out = ROOT / "assets" / ("dark" if name == "dark" else "")

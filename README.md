@@ -135,4 +135,8 @@ registry is queried rather than typed, econometric work carried in R and Stata a
 and a reporting layer in Power BI. Each ships with the same verification suite and the same
 written limitations as the work above.
 
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/dark/s-activity.svg"/><img src="assets/s-activity.svg" alt="Activity"/></picture>
+
+<picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/theshaswat/theshaswat/output/snake-dark.svg"/><img src="https://raw.githubusercontent.com/theshaswat/theshaswat/output/snake.svg" alt="Contribution graph, redrawn daily"/></picture>
+
 <sub>Independent research. Not investment advice.</sub>
