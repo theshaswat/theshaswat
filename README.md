@@ -76,6 +76,42 @@ The same gap runs through the buyer side. 97% of customers buy exactly once, so 
 `cohort LTV` `acquisition funnel` `contribution margin` `logistic propensity` `out-of-time validation` `scikit-learn` `Plotly`
 
 </td></tr>
+<tr><td width="100%">
+
+### [Bank LCR & Funding Concentration](https://github.com/theshaswat/bank-lcr-funding-concentration)
+
+**The bank with the lower headline LCR has the more retail-anchored funding base.** HDFC Bank and IndusInd Bank both clear RBI's 100% minimum every quarter — reconstructing five quarters of both banks' own Pillar 3 disclosures line by line shows IndusInd's higher ratio (126.66% vs. 115.00%, latest quarter) sits on 40.9% wholesale funding against HDFC's 33.1%, and less-stable deposits at 95.3% of its retail base against 77.6%.
+
+`Basel III LCR` `PDF table extraction` `regulatory reconciliation` `funding-mix analysis` `Python` `pandas` `pdfplumber`
+
+</td></tr>
+<tr><td width="100%">
+
+### [Campaign ROI & Media Spend Simulator](https://github.com/theshaswat/campaign-roi-media-spend-simulator)
+
+**Display campaigns don't clear break-even; Shopping/Sponsored campaigns clear it at ~₹22,800 of spend.** Built from published 2026 India ad-tech benchmarks rather than invented assumptions — incremental ROAS of 0.94x for Display against 4.29x for Shopping, cross-validated between an independent Python model and a live-formula Excel workbook to the cent.
+
+`funnel modeling` `break-even & sensitivity analysis` `Excel` `Python` `openpyxl`
+
+</td></tr>
+<tr><td width="100%">
+
+### [Indirect Tax Classification & Reconciliation Engine](https://github.com/theshaswat/indirect-tax-classification-reconciliation)
+
+**A wrong or stale tax code on the vendor master is the most common root cause of an exception queue.** A rules engine classifies synthetic AP invoice lines against 20 sourced rate rules across 11 jurisdictions (GST, India TDS, US state Sales & Use Tax, EU VAT), independently re-derives the correct code, and flags mismatches — a 33.3% exception rate matching the 1-in-3 error-injection rate exactly, once a data-generator bug was found and fixed.
+
+`GST` `VAT` `sales & use tax` `rules engine` `reconciliation` `Python`
+
+</td></tr>
+<tr><td width="100%">
+
+### [Retail Media Monetization Benchmark, India](https://github.com/theshaswat/retail-media-monetization-benchmark-india)
+
+**Two of three marketplaces disclose a number that's easy to mistake for ad revenue but is actually the opposite side of the transaction.** Benchmarking ad-revenue-as-%-of-GOV for Swiggy, Nykaa and Eternal from public disclosures alone, only Swiggy discloses it cleanly (≥4% of Food Delivery GOV); Nykaa and Eternal disclose their own ad **spend** ("AdEx") instead, which this project records separately rather than substituting in.
+
+`retail media` `public-disclosure benchmarking` `Python`
+
+</td></tr>
 </table>
 
 <picture><source media="(prefers-color-scheme: dark)" srcset="assets/dark/s-method.svg"/><img src="assets/s-method.svg" alt="How it's built"/></picture>
