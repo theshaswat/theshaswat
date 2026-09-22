@@ -242,13 +242,12 @@ def showcase(t):
     to reach the writing. Ten cards narrow enough to fit in fewer rows clip
     their own headlines instead.
 
-    So the two jobs are split. The panel on the left holds one project at a
-    time and rotates, which is where the motion and the detail go. The column
-    on the right lists every project permanently, with the current one marked,
-    which is where completeness goes - a reader who never waits for a full
-    cycle can still see the whole body of work and count it. The index label
-    and the panel content come from the same tuple, so the list can never
-    fall out of step with what the panel is showing."""
+    So the two jobs are split. The panel on the left carries one project at a
+    time and rotates through them, which is where the detail fits. The column
+    on the right lists every project permanently with the current one marked,
+    so a reader who never waits for a full cycle can still see the whole body
+    of work and count it. The index label and the panel content come from the
+    same tuple, so the list cannot fall out of step with the panel."""
     n = len(CARDS)
     pad, row_h, gap = 22, 21, 16
     left_w = 610
@@ -322,15 +321,14 @@ NAME = "SHASWAT"
 def nameplate(t):
     """A snake that writes the name across a contribution-graph grid.
 
-    The third-party snake action eats a real contribution graph, which is the
-    right idea and the wrong input here: a graph with ten active days renders
-    as a snake crawling through an empty field, which reads as an absence
-    rather than a flourish. Same geometry, different payload - the cells spell
-    the name, and they light up behind the snake rather than being eaten by
-    it, so the animation builds something instead of clearing it.
+    The third-party snake action eats a real contribution graph. On a graph
+    with ten active days that renders as a snake crawling through an empty
+    field, which reads as an absence. This keeps the geometry and changes the
+    payload: the cells spell the name, and they light up behind the snake
+    instead of being eaten, so the sweep builds something.
 
-    Nothing here claims to be activity data, and it is deliberately not placed
-    under a heading that would imply it is."""
+    The cells are letters, not contribution counts, so this sits under no
+    heading that would imply it reports activity."""
     cols, rows = 53, 7
     pitch, cell, r = 18, 15, 3
     gw = cols * pitch - (pitch - cell)
