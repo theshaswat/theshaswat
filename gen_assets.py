@@ -307,6 +307,96 @@ def showcase(t):
             f'<g font-family="{MONO}">' + "".join(body) + "</g></svg>\n")
 
 
+# A 5x5 cell font, drawn on the same grid a contribution graph uses.
+GLYPHS = {
+    "S": [".###.", "#....", ".###.", "....#", ".###."],
+    "H": ["#...#", "#...#", "#####", "#...#", "#...#"],
+    "A": [".###.", "#...#", "#####", "#...#", "#...#"],
+    "W": ["#...#", "#...#", "#.#.#", "#####", "#...#"],
+    "T": ["#####", "..#..", "..#..", "..#..", "..#.."],
+}
+GAP = 2  # blank columns between glyphs - 1 reads as a single run of cells
+NAME = "SHASWAT"
+
+
+def nameplate(t):
+    """A snake that writes the name across a contribution-graph grid.
+
+    The third-party snake action eats a real contribution graph, which is the
+    right idea and the wrong input here: a graph with ten active days renders
+    as a snake crawling through an empty field, which reads as an absence
+    rather than a flourish. Same geometry, different payload - the cells spell
+    the name, and they light up behind the snake rather than being eaten by
+    it, so the animation builds something instead of clearing it.
+
+    Nothing here claims to be activity data, and it is deliberately not placed
+    under a heading that would imply it is."""
+    cols, rows = 53, 7
+    pitch, cell, r = 18, 15, 3
+    gw = cols * pitch - (pitch - cell)
+    ox, oy = (W - gw) // 2, 16
+    gh = rows * pitch - (pitch - cell)
+
+    glyph_w = len(NAME) * 5 + (len(NAME) - 1) * GAP
+    x0 = (cols - glyph_w) // 2
+    y0 = (rows - 5) // 2
+
+    lit = {}                      # column -> [rows]
+    for gi, ch in enumerate(NAME):
+        for ry, line in enumerate(GLYPHS[ch]):
+            for rx, px in enumerate(line):
+                if px == "#":
+                    lit.setdefault(x0 + gi * (5 + GAP) + rx, []).append(y0 + ry)
+
+    sweep, hold = 72.0, 90.0
+    start_col = -6
+    span = cols - start_col
+
+    css = [f".s{{fill:{t['ink']}}}"]
+    for c in sorted(lit):
+        on = (c - start_col) / span * sweep
+        css.append(f".k{c}{{animation:k{c} 14s infinite}}")
+        css.append(f"@keyframes k{c}{{0%,{on:.2f}%{{opacity:0}}"
+                   f"{on+1.4:.2f}%,{hold:.2f}%{{opacity:1}}100%{{opacity:0}}}}")
+    css.append(f"@keyframes crawl{{0%{{transform:translateX({start_col*pitch}px)}}"
+               f"{sweep:.2f}%,100%{{transform:translateX({cols*pitch}px)}}}}")
+    css.append(f"@keyframes wave{{0%,100%{{transform:translateY(-{pitch}px)}}"
+               f"25%{{transform:translateY({pitch}px)}}"
+               f"50%{{transform:translateY(0px)}}"
+               f"75%{{transform:translateY({pitch}px)}}}}")
+    css.append(f"@keyframes fill{{0%{{width:0}}{sweep:.2f}%,100%{{width:{gw}px}}}}")
+    css.append(".crawl{animation:crawl 14s infinite linear}"
+               ".wave{animation:wave 14s infinite ease-in-out}"
+               ".bar{animation:fill 14s infinite linear}")
+
+    body = []
+    for c in range(cols):
+        for rr in range(rows):
+            body.append(f'<rect x="{ox+c*pitch}" y="{oy+rr*pitch}" width="{cell}" '
+                        f'height="{cell}" rx="{r}" fill="{t["cardline"]}"/>')
+    for c, rws in sorted(lit.items()):
+        for rr in rws:
+            body.append(f'<rect class="k{c}" x="{ox+c*pitch}" y="{oy+rr*pitch}" '
+                        f'width="{cell}" height="{cell}" rx="{r}" '
+                        f'fill="{t["accent"]}" opacity="0"/>')
+
+    seg = "".join(
+        f'<rect class="s" x="{ox-i*pitch}" y="{oy+(y0+2)*pitch}" width="{cell}" '
+        f'height="{cell}" rx="{r}" opacity="{1-0.17*i:.2f}"/>' for i in range(5))
+    body.append(f'<g class="crawl"><g class="wave">{seg}</g></g>')
+
+    by = oy + gh + 20
+    body.append(f'<rect x="{ox}" y="{by}" width="{gw}" height="4" rx="2" '
+                f'fill="{t["cardline"]}"/>')
+    body.append(f'<rect class="bar" x="{ox}" y="{by}" width="0" height="4" rx="2" '
+                f'fill="{t["accent"]}"/>')
+
+    H = by + 4 + 16
+    return (f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" '
+            f'viewBox="0 0 {W} {H}" role="img" aria-label="Shaswat">'
+            f'<style>{"".join(css)}</style>' + "".join(body) + "</svg>\n")
+
+
 def section(t, title):
     tw = len(title) * 8.6
     return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="34" viewBox="0 0 {W} 34" role="img" aria-label="{title}">
@@ -319,7 +409,7 @@ def section(t, title):
 
 
 SECTIONS = [("Selected work", "s-work"), ("How it's built", "s-method"),
-            ("Next", "s-next"), ("Activity", "s-activity")]
+            ("Next", "s-next")]
 
 for name, theme in THEMES.items():
     out = ROOT / "assets" / ("dark" if name == "dark" else "")
@@ -328,6 +418,7 @@ for name, theme in THEMES.items():
     if (ROOT / ".icons").is_dir():
         (out / "toolkit.svg").write_text(toolkit(theme))
     (out / "showcase.svg").write_text(showcase(theme))
+    (out / "nameplate.svg").write_text(nameplate(theme))
     for title, slug in SECTIONS:
         (out / f"{slug}.svg").write_text(section(theme, title))
 print("wrote", len(list((ROOT / "assets").rglob("*.svg"))), "svg files")
