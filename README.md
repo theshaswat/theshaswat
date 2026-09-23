@@ -140,11 +140,14 @@ The same gap runs through the buyer side. 97% of customers buy exactly once, so 
 
 One registry holds every externally-sourced figure, tagged by provenance tier; nothing else
 contains a typed-in number, so the memo, the notebooks, the deck and the model cannot drift
-apart. The valuation repositories each carry their own verification suite and run it in CI on every push — the
-Zepto build rebuilds all nine notebooks, the deck, the PDFs and the workbook from source and
-re-audits the result, and the PayPal build asserts every committed output still reproduces
-byte-for-byte. Primary sources are pinned by SHA-256 rather than redistributed, so a reader can
-prove they hold the same document the figures were read from.
+apart. Every repository here carries its own verification suite and runs it in CI on each push,
+and each workflow says in its own header what it does and does not prove. The Zepto build rebuilds
+all nine notebooks, the deck, the PDFs and the workbook from source and re-audits the result; the
+PayPal build asserts every committed output still reproduces byte-for-byte; the unit-economics
+build re-derives the seller funnel from the raw CSVs and fails if the headline 8,000 to 842 to 379
+ever stops holding. Primary sources are pinned by SHA-256 rather than redistributed, so a reader
+can prove they hold the same document the figures were read from without me republishing somebody
+else's annual report.
 
 Limitations are written down rather than omitted, including corrections made mid-analysis where
 an earlier draft was wrong. Two of the three recorded in the Zepto memo are errors a reader
