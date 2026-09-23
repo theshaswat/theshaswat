@@ -47,6 +47,8 @@ TICKER = [
     "Campaign ROI &#8212; Display clears break-even at no level of spend",
     "Indirect Tax &#8212; 33.3% exceptions caught, matching the injected rate exactly",
     "Retail Media &#8212; one marketplace of three discloses the number that matters",
+    "Private banks &#8212; every disclosed margin narrowed and all four grew profit anyway",
+    "EPC &#8212; two of four reported profit on negative operating cash flow",
 ]
 
 
@@ -210,6 +212,14 @@ CARDS = [
      "62% of gross to 0.03%", "put-linked exposure, the quarter before the collapse",
      "13F reconstruction &#183; liquidity &#183; attribution",
      "Situational Awareness &#8212; Unwind Forensics"),
+    ("FOUR PRIVATE BANKS", "Margin &amp; Credit-Cost Bridge",
+     "Margin down, profit up", "at all four; provisions are the line that reconciles it",
+     "P&amp;L attribution &#183; four reconciliation checks",
+     "Bank Margin &amp; Credit-Cost Bridge"),
+    ("FOUR EPC CONTRACTORS", "Earnings-Quality Screen",
+     "Profit without the cash", "two of four earned FY26 profit on negative operating cash",
+     "Sloan accruals &#183; balance-sheet tie-out",
+     "EPC Earnings-Quality Screen"),
     ("OLIST MARKETPLACE", "Unit Economics &amp; Cross-Sell",
      "55% of won sellers never sold", "a single item. Winning is not activating.",
      "cohort LTV &#183; funnel &#183; propensity",

@@ -7,7 +7,7 @@
 
 <picture><source media="(prefers-color-scheme: dark)" srcset="assets/dark/s-work.svg"/><img src="assets/s-work.svg" alt="Selected work"/></picture>
 
-<picture><source media="(prefers-color-scheme: dark)" srcset="assets/dark/showcase.svg"/><img src="assets/showcase.svg" alt="Zepto — $3.8bn base case against a $7.0bn private mark · Sun Pharma/Organon — pass on the spread · PayPal — $60.50 below the floor of all three methods · ACC — a 20% profit miss moved the stock more than a 68% miss did · Situational Awareness — put-linked exposure fell from 62% of gross to 0.03% the quarter before the collapse · Olist — 55% of won sellers never sold a single item"/></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/dark/showcase.svg"/><img src="assets/showcase.svg" alt="Zepto — $3.8bn base case against a $7.0bn private mark · Sun Pharma/Organon — pass on the spread · PayPal — $60.50 below the floor of all three methods · ACC — a 20% profit miss moved the stock more than a 68% miss did · Situational Awareness — put-linked exposure fell from 62% of gross to 0.03% the quarter before the collapse · Private banks — every disclosed margin narrowed and all four grew profit anyway · EPC — two of four earned profit on negative operating cash · Olist — 55% of won sellers never sold a single item"/></picture>
 
 <table>
 <tr><td width="100%">
@@ -63,6 +63,28 @@ FY25's decline arrived with no precedent and produced a significant, lasting −
 Days-to-liquidate built from position size against trailing volume put the book at 1.55 days, which reads as liquid. The single name it flagged, Core Scientific at 9.25 days, is the one a Schedule 13D/A shows still being sold by block trade five days after the main unwind, 12.2% below its mid-July prints. Tested out-of-sample the screen initially failed: Berkshire's concentration exceeds Melvin Capital's before GameStop, because Melvin's risk sat in swaps a 13F cannot see. That result is why the live screen scores concentration trend alongside level rather than level alone.
 
 `13F reconstruction` `liquidity & days-to-liquidate` `return attribution` `out-of-sample validation` `SEC EDGAR` `Python`
+
+</td></tr>
+<tr><td width="100%">
+
+### [Private Banks — Margin & Credit-Cost Bridge](https://github.com/theshaswat/bank-nim-credit-cost-bridge)
+
+**Every margin that is disclosed narrowed, and all four banks grew profit anyway.** Provisions are the line that reconciles those two facts — three of the four publish a net interest margin and all three fell in the June 2026 quarter. But the four did not get there the same way: decomposing each bank's change in profit across net interest income, other income, operating expenses, provisions and tax puts provisions first at Axis and HDFC, and net interest income first at Kotak and ICICI.
+
+HDFC is the clearest case and the one most likely to be misread: provisions fell ₹11,380 Cr, worth 62.7 points of profit growth against a headline of 5.0, while other income fell ₹8,910 Cr because the prior-year quarter carried a one-time gain on the HDB Financial Services divestment. Four reconciliation checks run before any comparison is computed and the bridge is not written unless all four pass — an NII tie-out, computed growth against the growth each bank printed itself, a five-line P&L walk to reported PAT, and the attribution closing on the change in profit. Tolerances come from each bank's own reporting precision rather than being chosen, and the P&L figures were extracted twice, independently, with the second pass locating each table by content rather than by the page number the first pass recorded.
+
+`P&L attribution` `reconciliation` `PDF table extraction` `Python` `pandas` `pdfplumber`
+
+</td></tr>
+<tr><td width="100%">
+
+### [EPC Contractors — Earnings-Quality Screen](https://github.com/theshaswat/epc-earnings-quality-screen)
+
+**Two of four reported FY26 profit while operating cash flow was negative.** NCC booked ₹724 Cr of profit against −₹459 Cr of operating cash, KEC ₹606 Cr against −₹414 Cr. Ranked on Sloan (1996) total accruals — profit less operating cash, over average total assets — those two sit at the low-quality end at +5.03% and +4.31%, and PSP Projects at the other, with operating cash 5.8x its profit.
+
+L&T's ratio is +0.53%, but only once group profit is used rather than the attributable figure. The attributable line excludes ₹2,870 Cr of profit belonging to non-controlling interests while the cash flow and the asset base it is measured against are both consolidated, and mixing the two bases flips the sign of the result — an earlier revision of this screen had it the wrong way round and called L&T the cleanest of the four.
+
+`Sloan accruals` `earnings quality` `balance-sheet reconciliation` `Python` `pandas` `pdfplumber`
 
 </td></tr>
 <tr><td width="100%">
