@@ -32,9 +32,9 @@ THEMES = {
 # The disciplines, named as work rather than as job titles. Between them these
 # cover valuation, M&A, banking, strategy/consulting, operating analysis and
 # economics without the page ever asking for a job.
-DISCIPLINES = ["FINANCE", "VALUATION", "M&amp;A", "CAPITAL MARKETS",
-               "STRATEGY", "OPERATIONS", "BUSINESS ANALYSIS", "ECONOMICS"]
-DISC_COLS = 4
+DISCIPLINES = ["FINANCE", "VALUATION", "M&amp;A", "CAPITAL MARKETS", "STRATEGY",
+               "OPERATIONS", "BUSINESS ANALYSIS", "RISK &amp; CONTROLS", "INTERNAL AUDIT", "ECONOMICS"]
+DISC_COLS = 5
 
 TICKER = [
     "Zepto &#8212; $3.8bn base case against a $7.0bn private mark",
@@ -49,6 +49,8 @@ TICKER = [
     "Retail Media &#8212; one marketplace of three discloses the number that matters",
     "Private banks &#8212; every disclosed margin narrowed and all four grew profit anyway",
     "EPC &#8212; two of four reported profit on negative operating cash flow",
+    "Procure-to-pay audit &#8212; 2,175 possible duplicate payments in 251,734 items",
+    "Revenue assurance &#8212; discounts above policy are 93% of the leakage",
 ]
 
 
@@ -220,6 +222,14 @@ CARDS = [
      "Profit without the cash", "two of four earned FY26 profit on negative operating cash",
      "Sloan accruals &#183; balance-sheet tie-out",
      "EPC Earnings-Quality Screen"),
+    ("PROCURE-TO-PAY AUDIT", "Risk &amp; Control Matrix",
+     "3.1% possible duplicates", "2,175 of 70,817 paid items, in a real 251,734-item log",
+     "SQL controls testing &#183; audit report",
+     "P2P Internal Audit &#8212; Control Tests"),
+    ("REVENUE ASSURANCE", "Leakage Review",
+     "93% of leakage is discounts", "R$ 317k on R$ 15.4m billed, 96,470 delivered orders",
+     "reconciliation &#183; SOPs &#183; control checklist",
+     "Revenue Assurance &#8212; Leakage Review"),
     ("OLIST MARKETPLACE", "Unit Economics &amp; Cross-Sell",
      "55% of won sellers never sold", "a single item. Winning is not activating.",
      "cohort LTV &#183; funnel &#183; propensity",

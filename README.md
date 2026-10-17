@@ -1,4 +1,4 @@
-<picture><source media="(prefers-color-scheme: dark)" srcset="assets/dark/header.svg"/><img src="assets/header.svg" alt="Shaswat Sharma — finance, valuation, M&A, capital markets, strategy, operations, business analysis, economics"/></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/dark/header.svg"/><img src="assets/header.svg" alt="Shaswat Sharma — finance, valuation, M&A, capital markets, strategy, operations, business analysis, risk and controls, internal audit, economics"/></picture>
 
 <a href="mailto:shaswatsharma.work@gmail.com"><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/EMAIL-0d1117?style=flat-square&logo=maildotru&logoColor=ffffff"/><img src="https://img.shields.io/badge/EMAIL-ffffff?style=flat-square&logo=maildotru&logoColor=0f172a" alt="Email"/></picture></a>
 <a href="https://www.linkedin.com/in/shaswatsharma49"><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/LINKEDIN-0d1117?style=flat-square&logo=linkedin&logoColor=ffffff"/><img src="https://img.shields.io/badge/LINKEDIN-ffffff?style=flat-square&logo=linkedin&logoColor=0f172a" alt="LinkedIn"/></picture></a>
@@ -7,7 +7,7 @@
 
 <picture><source media="(prefers-color-scheme: dark)" srcset="assets/dark/s-work.svg"/><img src="assets/s-work.svg" alt="Selected work"/></picture>
 
-<picture><source media="(prefers-color-scheme: dark)" srcset="assets/dark/showcase.svg"/><img src="assets/showcase.svg" alt="Zepto — $3.8bn base case against a $7.0bn private mark · Sun Pharma/Organon — pass on the spread · PayPal — $60.50 below the floor of all three methods · ACC — a 20% profit miss moved the stock more than a 68% miss did · Situational Awareness — put-linked exposure fell from 62% of gross to 0.03% the quarter before the collapse · Private banks — every disclosed margin narrowed and all four grew profit anyway · EPC — two of four earned profit on negative operating cash · Olist — 55% of won sellers never sold a single item"/></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/dark/showcase.svg"/><img src="assets/showcase.svg" alt="Zepto — $3.8bn base case against a $7.0bn private mark · Sun Pharma/Organon — pass on the spread · PayPal — $60.50 below the floor of all three methods · ACC — a 20% profit miss moved the stock more than a 68% miss did · Situational Awareness — put-linked exposure fell from 62% of gross to 0.03% the quarter before the collapse · Private banks — every disclosed margin narrowed and all four grew profit anyway · EPC — two of four earned profit on negative operating cash · Procure-to-pay audit — 2,175 possible duplicate payments in a real 251,734-item log · Revenue assurance — discounts above policy are 93% of R$ 317k of leakage · Olist — 55% of won sellers never sold a single item"/></picture>
 
 <table>
 <tr><td width="100%">
@@ -85,6 +85,28 @@ HDFC is the clearest case and the one most likely to be misread: provisions fell
 L&T's ratio is +0.53%, but only once group profit is used rather than the attributable figure. The attributable line excludes ₹2,870 Cr of profit belonging to non-controlling interests while the cash flow and the asset base it is measured against are both consolidated, and mixing the two bases flips the sign of the result — an earlier revision of this screen had it the wrong way round and called L&T the cleanest of the four.
 
 `Sloan accruals` `earnings quality` `balance-sheet reconciliation` `Python` `pandas` `pdfplumber`
+
+</td></tr>
+<tr><td width="100%">
+
+### [Procure-to-Pay — Internal Audit Risk & Control Matrix](https://github.com/theshaswat/p2p-internal-audit-rcm)
+
+**2,175 of 70,817 paid items look like duplicate payments, and 5,149 of 217,772 had the same person create the order and record its goods receipt.** Six SQL tests ran over all 251,734 items of a real purchase-order log (BPI Challenge 2019) against a ten-risk control matrix. The three-way-match tests came back clean: 109 invoices cleared with no net goods receipt and 87 cleared before the first receipt, both under 0.1%. Overall conclusion: needs improvement, five findings, one rated High.
+
+The log holds one value per item rather than separate receipt and invoice amounts, so three-way match is tested on event sequence, and the duplicate hits are leads to check against invoices, not confirmed losses. Two assumptions are mine and stated: the 10,000 approval limit and the 7-day duplicate window. A first version of the payment-without-receipt test counted reversals as payments; spot-checking cases caught it, and the test now excludes them.
+
+`internal audit` `risk & control matrix` `three-way match` `segregation of duties` `SQL` `DuckDB`
+
+</td></tr>
+<tr><td width="100%">
+
+### [Revenue Assurance — Leakage Review](https://github.com/theshaswat/revenue-assurance-leakage-review)
+
+**R$ 317k of leakage on R$ 15.4m billed, and 93% of it is voucher discounts above the cap.** 96,470 delivered Olist orders reconciled across order lines, delivery dates and payments. Billed and collected agree to within R$ 2,688, so unbilled orders are negligible (R$ 341 across 18 orders); the exposure is discounts (R$ 295,795) and prices billed more than 10% below list (R$ 21,239).
+
+Olist has no price list or discount policy, so the 10% price tolerance and the 10% voucher cap are mine; the report shows the result at 5% and 20%, and the discount figure moves between R$ 319k and R$ 252k across that range. Each leakage type has its own one-page SOP, and the control checklist is ranked by value at risk.
+
+`revenue assurance` `reconciliation` `SOPs & controls` `Python` `pandas` `Excel`
 
 </td></tr>
 <tr><td width="100%">
