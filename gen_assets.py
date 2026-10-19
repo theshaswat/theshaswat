@@ -49,6 +49,7 @@ TICKER = [
     "Retail Media &#8212; one marketplace of three discloses the number that matters",
     "Private banks &#8212; every disclosed margin narrowed and all four grew profit anyway",
     "EPC &#8212; two of four reported profit on negative operating cash flow",
+    "Indian AMCs &#8212; SIP inflows run ~8x FY17, yet only 9.5% of households invest",
     "Procure-to-pay audit &#8212; 2,175 possible duplicate payments in 251,734 items",
     "Revenue assurance &#8212; discounts above policy are 93% of the leakage",
 ]
@@ -222,6 +223,10 @@ CARDS = [
      "Profit without the cash", "two of four earned FY26 profit on negative operating cash",
      "Sloan accruals &#183; balance-sheet tie-out",
      "EPC Earnings-Quality Screen"),
+    ("FOUR LISTED AMCS", "Retail-Investing Sector Call",
+     "9.5% of households invest", "while SIP inflows run ~8x FY17; Nippon India Underweight",
+     "reconciliation &#183; scorecard &#183; scenarios",
+     "Indian AMCs &#8212; Sector Call"),
     ("PROCURE-TO-PAY AUDIT", "Risk &amp; Control Matrix",
      "3.1% possible duplicates", "2,175 of 70,817 paid items, in a real 251,734-item log",
      "SQL controls testing &#183; audit report",

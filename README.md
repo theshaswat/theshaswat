@@ -7,7 +7,7 @@
 
 <picture><source media="(prefers-color-scheme: dark)" srcset="assets/dark/s-work.svg"/><img src="assets/s-work.svg" alt="Selected work"/></picture>
 
-<picture><source media="(prefers-color-scheme: dark)" srcset="assets/dark/showcase.svg"/><img src="assets/showcase.svg" alt="Zepto — $3.8bn base case against a $7.0bn private mark · Sun Pharma/Organon — pass on the spread · PayPal — $60.50 below the floor of all three methods · ACC — a 20% profit miss moved the stock more than a 68% miss did · Situational Awareness — put-linked exposure fell from 62% of gross to 0.03% the quarter before the collapse · Private banks — every disclosed margin narrowed and all four grew profit anyway · EPC — two of four earned profit on negative operating cash · Procure-to-pay audit — 2,175 possible duplicate payments in a real 251,734-item log · Revenue assurance — discounts above policy are 93% of R$ 317k of leakage · Olist — 55% of won sellers never sold a single item"/></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/dark/showcase.svg"/><img src="assets/showcase.svg" alt="Zepto — $3.8bn base case against a $7.0bn private mark · Sun Pharma/Organon — pass on the spread · PayPal — $60.50 below the floor of all three methods · ACC — a 20% profit miss moved the stock more than a 68% miss did · Situational Awareness — put-linked exposure fell from 62% of gross to 0.03% the quarter before the collapse · Private banks — every disclosed margin narrowed and all four grew profit anyway · EPC — two of four earned profit on negative operating cash · Indian AMCs — SIP inflows run about 8x FY17, yet only 9.5% of households invest · Procure-to-pay audit — 2,175 possible duplicate payments in a real 251,734-item log · Revenue assurance — discounts above policy are 93% of R$ 317k of leakage · Olist — 55% of won sellers never sold a single item"/></picture>
 
 <table>
 <tr><td width="100%">
@@ -89,6 +89,17 @@ L&T's ratio is +0.53%, but only once group profit is used rather than the attrib
 </td></tr>
 <tr><td width="100%">
 
+### [Indian AMCs — Retail-Investing Sector Call](https://github.com/theshaswat/great-indian-financialization)
+
+**SIP inflows run about 8x their FY17 level, and only 9.5% of Indian households invest.** RBI's savings data has physical assets rising from 59.7% to 71.5% of household savings while the Economic Survey has equity's share of financial savings going from about 2% to over 15%. Both hold, because they divide by different things: the shift is a reshuffle inside a shrinking financial-savings slice. The geography says the same. Cities beyond the top 30 hold 19.1% of mutual-fund AUM but supply 55–60% of new SIP registrations.
+
+The part of the boom that threatens incumbents runs through two brokers. Groww and Zerodha hold about 80% of retail equity investors, and their fund houses grew 2.85x and 2.66x in a year while still under 2% of HDFC AMC's assets. Scored on margin cushion and AUM growth, the four listed AMCs come out HDFC Neutral, Nippon India Underweight, UTI Neutral, and ABSL Neutral at low confidence, since ABSL's figures are on a different period basis than the other three. PAT margin stands in for distribution cost in that score, because distribution expense isn't disclosed consistently across the four.
+
+`data reconciliation` `exposure scorecard` `scenario analysis` `sector call` `Python` `pandas` `matplotlib`
+
+</td></tr>
+<tr><td width="100%">
+
 ### [Procure-to-Pay — Internal Audit Risk & Control Matrix](https://github.com/theshaswat/p2p-internal-audit-rcm)
 
 **2,175 of 70,817 paid items look like duplicate payments, and 5,149 of 217,772 had the same person create the order and record its goods receipt.** Six SQL tests ran over all 251,734 items of a real purchase-order log (BPI Challenge 2019) against a ten-risk control matrix. The three-way-match tests came back clean: 109 invoices cleared with no net goods receipt and 87 cleared before the first receipt, both under 0.1%. Overall conclusion: needs improvement, five findings, one rated High.
@@ -162,7 +173,8 @@ The same gap runs through the buyer side. 97% of customers buy exactly once, so 
 
 One registry holds every externally-sourced figure, tagged by provenance tier; nothing else
 contains a typed-in number, so the memo, the notebooks, the deck and the model cannot drift
-apart. Every repository here carries its own verification suite and runs it in CI on each push,
+apart. Where a deliverable does carry typed-in figures, as the AMC sector call's dashboards and
+deck do, CI checks every one of them against the registry at the precision it is written. Every repository here carries its own verification suite and runs it in CI on each push,
 and each workflow says in its own header what it does and does not prove. The Zepto build rebuilds
 all nine notebooks, the deck, the PDFs and the workbook from source and re-audits the result; the
 PayPal build asserts every committed output still reproduces byte-for-byte; the unit-economics
